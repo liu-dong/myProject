@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-<<<<<<< Updated upstream
-    <display-name>ChatRobot</display-name>
-    <description>ChatRobot_Alpha_0.0.1</description>
-
-    <!-- 编码过滤器 -->
-=======
     <display-name>ssmWeb</display-name>
 
->>>>>>> Stashed changes
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -26,10 +20,6 @@
         <url-pattern>/</url-pattern>
     </filter-mapping>
 
-<<<<<<< Updated upstream
-    <!-- 配置DispatcherServlet -->
-=======
->>>>>>> Stashed changes
     <servlet>
         <servlet-name>SpringMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -43,18 +33,10 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
-<<<<<<< Updated upstream
-        <!-- 匹配所有请求，此处也可以配置成 *.do 形式 -->
-=======
->>>>>>> Stashed changes
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
-<<<<<<< Updated upstream
-        <welcome-file>index.html</welcome-file>
-=======
         <welcome-file>index.jsp</welcome-file>
->>>>>>> Stashed changes
     </welcome-file-list>
 </web-app>
