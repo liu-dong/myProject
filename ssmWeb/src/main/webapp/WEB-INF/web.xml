@@ -7,6 +7,12 @@
 
     <display-name>ssmWeb</display-name>
 
+    <!-- Spring和mybatis的配置文件 -->
+    <context-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>classpath:spring-mybatis.xml</param-value>
+     </context-param>
+
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -35,6 +41,15 @@
         <servlet-name>SpringMVC</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!-- Spring监听器 -->
+    <listener>
+         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+     </listener>
+     <!--防止Spring内存溢出监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
