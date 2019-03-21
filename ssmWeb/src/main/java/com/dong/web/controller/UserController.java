@@ -1,6 +1,8 @@
 package com.dong.web.controller;
 
 import com.dong.web.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    // /user/test?id=1
+
+    private static Logger log= LoggerFactory.getLogger(UserController.class);
+
     @RequestMapping(value="/test",method= RequestMethod.GET)
     public String test(HttpServletRequest request, Model model){
         int userId = Integer.parseInt(request.getParameter("id"));
@@ -25,7 +29,7 @@ public class UserController {
             user.setUserName("java");
         }
 
-//        log.debug(user.toString());
+        log.debug(user.toString());
         model.addAttribute("user", user);
         return "home";
     }
