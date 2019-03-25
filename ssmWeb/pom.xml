@@ -203,6 +203,15 @@
                 </executions>
             </plugin>
         </plugins>
+        <!--idea 加载不到非resource下的xml文件-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 
