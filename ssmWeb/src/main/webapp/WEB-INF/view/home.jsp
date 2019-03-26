@@ -11,6 +11,6 @@
     <title>首页</title>
 </head>
 <body>
-<h1><font color="blue">欢迎！</font></h1>
+<h1><font color="blue">欢迎！</font>：${user.userName}</h1>
 </body>
 </html>
