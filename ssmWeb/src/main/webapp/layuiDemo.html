@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习layUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+</head>
+<body>
+<h1>学习layUI之路</h1>
+<div class="layui-row">
+    <div class="layui-col-xs12 layui-col-md8">
+        <div class="grid-demo grid-demo-bg1">移动：12/12、桌面：8/12</div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md4">
+        <div class="grid-demo">移动：6/12、桌面：4/12</div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md12">
+        <div class="grid-demo grid-demo-bg2">移动：6/12、桌面：12/12</div>
+    </div>
+</div>
+</body>
+<script src="/plugin/layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form','element'], function(){
+        var layer = layui.layer,
+            form = layui.form,
+        element = layui.element;
+        layer.msg('Hello World');
+    });
+</script>
+</html>
