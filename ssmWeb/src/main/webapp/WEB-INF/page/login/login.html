@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+
+    <!--<script>-->
+        <!--var systerm = '[[${systemName}]]';-->
+        <!--alert(systerm);-->
+    <!--</script>-->
+</head>
+<body>
+<div>
+    <h1>$systemName</h1>
+    <form action="/loginRegister/login" >
+        <label>用户名：</label>
+        <label>
+            <input type="text" name="loginName">
+        </label>
+        <label>密码：</label>
+        <label>
+            <input type="password" name="password">
+        </label>
+        <label>
+            <button type="button" name="login" onclick="loginSytem()">登录</button>
+            <button type="reset" name="reset">重置</button>
+        </label>
+    </form>
+</div>
+</body>
+</html>

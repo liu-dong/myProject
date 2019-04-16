@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
+<script type="text/javascript">
+    top.location.replace("loginRegister/goLoginView");
+</script>
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
 
-</head>
-<body>
-
-</body>
-
-</html>
+<!--</body>-->
+<!--</html>-->
