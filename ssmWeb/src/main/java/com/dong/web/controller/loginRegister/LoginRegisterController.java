@@ -1,6 +1,8 @@
 package com.dong.web.controller.loginRegister;
 
+import com.dong.web.model.User;
 import com.dong.web.service.IUserService;
+import com.dong.web.service.LoginRegisterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,19 @@ public class LoginRegisterController {
     private static Logger log= LoggerFactory.getLogger(LoginRegisterController.class);
 
     @Autowired
-    private IUserService userService;
+    private LoginRegisterService loginRegisterService;
 
     @RequestMapping(value="/goLoginView",method= RequestMethod.GET)
     public String goLoginView(HttpServletRequest request, Model model){
         model.addAttribute("systemName", "信息管理系统");
+        return "login/login";
+    }
+
+    @RequestMapping(value="/login",method= RequestMethod.POST)
+    public String login(User user){
+        boolean result = false;
+        result = loginRegisterService.login(user);
+
         return "login/login";
     }
 

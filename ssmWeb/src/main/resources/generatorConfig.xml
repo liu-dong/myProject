@@ -16,20 +16,20 @@
 
         <!--生成Model类存放位置-->
         <javaModelGenerator targetPackage="com.dong.web.model"
-                            targetProject="E:\LD\ssmWeb\src\main\java">
+                            targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--生成映射文件存放位置-->
         <sqlMapGenerator targetPackage="com.dong.web.mapper"
-                         targetProject="E:\LD\ssmWeb\src\main\java">
+                         targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--生成Dao类存放位置-->
         <javaClientGenerator targetPackage="com.dong.web.dao"
-                             targetProject="E:\LD\ssmWeb\src\main\java" type="XMLMAPPER">
+                             targetProject=".\src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 

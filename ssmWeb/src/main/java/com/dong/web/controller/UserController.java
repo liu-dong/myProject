@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/user")
@@ -35,7 +36,7 @@ public class UserController {
         if (userId==1) {
             user = new User();
             user.setAge(11);
-            user.setId(1);
+            user.setId(UUID.randomUUID().toString().replace("-", ""));
             user.setPassword("123");
             user.setUserName("java");
         }
