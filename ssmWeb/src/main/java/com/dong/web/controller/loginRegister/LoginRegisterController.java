@@ -1,7 +1,6 @@
 package com.dong.web.controller.loginRegister;
 
 import com.dong.web.model.User;
-import com.dong.web.service.IUserService;
 import com.dong.web.service.LoginRegisterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +31,13 @@ public class LoginRegisterController {
     public String login(User user){
         boolean result = false;
         result = loginRegisterService.login(user);
+        if(result){
+            return "success";
+        }else {
+            return "error";
+        }
 
-        return "login/login";
+
     }
 
 }
