@@ -13,7 +13,7 @@
         <param-value>classpath:spring-mybatis.xml</param-value>
     </context-param>
     <filter>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -21,8 +21,8 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <!-- Spring监听器 -->

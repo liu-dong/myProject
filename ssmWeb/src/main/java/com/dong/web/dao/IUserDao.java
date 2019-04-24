@@ -1,6 +1,6 @@
 package com.dong.web.dao;
 
-import com.dong.web.model.User;
+import com.dong.web.domain.User;
 
 import org.mybatis.spring.annotation.MapperScan;
 

@@ -1,6 +1,6 @@
 package com.dong.web.dao;
 
-import com.dong.web.model.User;
+import com.dong.web.domain.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(String id);

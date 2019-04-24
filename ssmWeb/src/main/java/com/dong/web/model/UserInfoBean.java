@@ -1,6 +1,7 @@
 package com.dong.web.model;
 
-public class User {
+public class UserInfoBean {
+
     private String id;
 
     private String userName;
@@ -9,16 +10,16 @@ public class User {
 
     private String password;
 
-    private Integer age;
+    private String age;
 
-    private Integer sex;
+    private String sex;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+        this.id = id;
     }
 
     public String getUserName() {
@@ -26,7 +27,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getLoginName() {
@@ -34,7 +35,7 @@ public class User {
     }
 
     public void setLoginName(String loginName) {
-        this.loginName = loginName == null ? null : loginName.trim();
+        this.loginName = loginName;
     }
 
     public String getPassword() {
@@ -42,22 +43,22 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 }

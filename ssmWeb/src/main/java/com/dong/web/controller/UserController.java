@@ -1,6 +1,6 @@
 package com.dong.web.controller;
 
-import com.dong.web.model.User;
+import com.dong.web.domain.User;
 import com.dong.web.service.IUserService;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;

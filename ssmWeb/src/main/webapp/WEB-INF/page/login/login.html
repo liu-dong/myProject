@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>登录页面</title>
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <div align="center">
-    <h1>$systemName</h1>
+    <h1>信息管理系统</h1>
     <form action="/loginRegister/login" method="post">
         <label>用户名：</label>
         <label>
@@ -21,6 +23,13 @@
             <button type="reset" name="reset">重置</button>
         </label>
     </form>
+    <button type="button" onclick="register()">注册</button>
 </div>
 </body>
+<script type="text/javascript">
+    function register() {
+
+        window.location.replace("/loginRegister/goRegisterView")
+    }
+</script>
 </html>

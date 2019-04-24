@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dong.web.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.dong.web.model.User" >
+  <resultMap id="BaseResultMap" type="com.dong.web.domain.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="loginName" property="loginName" jdbcType="VARCHAR" />
@@ -28,13 +28,13 @@
     delete from user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.dong.web.model.User" >
+  <insert id="insert" parameterType="com.dong.web.domain.User" >
     insert into user (id, user_name, loginName, 
       password, age, sex)
-    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginname,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.dong.web.model.User" >
+  <insert id="insertSelective" parameterType="com.dong.web.domain.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -64,7 +64,7 @@
         #{userName,jdbcType=VARCHAR},
       </if>
       <if test="loginName != null" >
-        #{loginname,jdbcType=VARCHAR},
+        #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -77,14 +77,14 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.model.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.domain.User" >
     update user
     <set >
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="loginName != null" >
-        loginName = #{loginname,jdbcType=VARCHAR},
+        loginName = #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
@@ -98,10 +98,10 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dong.web.model.User" >
+  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.User" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
-      loginName = #{loginname,jdbcType=VARCHAR},
+      loginName = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       sex = #{sex,jdbcType=INTEGER}
