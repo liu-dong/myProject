@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><font size="4">个人信息管理系统</font></div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">用户管理</a></li>
+            <li class="layui-nav-item"><a href="">图书管理</a></li>
+            <li class="layui-nav-item"><a href="">系统管理</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="/images/background.jpg" class="layui-nav-img">
+                    LD
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <!--<dd><a href="">安全设置</a></dd>-->
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="javascript:exitLogin();">退出登录</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:void(0);">人员管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">人员信息列表</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="javascript:;">列表三</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">解决方案</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <table id="personInfoList" lay-filter="test"></table>
+            <img src="/images/background.jpg">
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © dong.com - 底部固定区域
+    </div>
+</div>
+<script src="/plugin/layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use(['element','table'], function(){
+        var element = layui.element;
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#personInfoList',
+            height: 500,
+            url: '/user/findUserInfoList', //数据接口,
+            method: 'POST',
+            page: true, //开启分页,
+            cols: [[ //表头
+                {field: 'id', title: '主键', width:'15%', fixed: 'left'},
+                {field: 'userName', title: '姓名', width:'15%'},
+                {field: 'sex', title: '性别', width:'10%', sort: true},
+                {field: 'age', title: '年龄', width:'10%', sort: true},
+                {field: 'loginName', title: '用户名', width:'15%'},
+                {field: 'password', title: '密码', width: '15%'},
+                {field: 'id', title: '操作', width: '20%', sort: true}
+            ]]
+        });
+    });
+
+    //退出登录
+    function exitLogin() {
+        window.location.replace("/loginRegister/goLoginView")
+    }
+</script>
+</body>
+</html>

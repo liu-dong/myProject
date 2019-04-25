@@ -8,4 +8,6 @@ public interface LoginRegisterService {
     boolean login(User user);
 
     User register(UserInfoBean bean);
+
+
 }

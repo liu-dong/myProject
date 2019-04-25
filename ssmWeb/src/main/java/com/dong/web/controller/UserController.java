@@ -1,6 +1,7 @@
 package com.dong.web.controller;
 
 import com.dong.web.domain.User;
+import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.IUserService;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -16,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -101,5 +104,13 @@ public class UserController {
         }
         FileUtils.copyInputStreamToFile(file.getInputStream(), new File("E:\\fileUpload\\",System.currentTimeMillis()+file.getOriginalFilename()));
         return "success";
+    }
+
+    @RequestMapping(value="/findUserInfoList",method=RequestMethod.POST)
+    @ResponseBody
+    public List<User> findUserInfoList(UserInfoBean bean){
+        List<User> result;
+        result = userService.findUserInfoList(bean);
+        return result;
     }
 }

@@ -44,7 +44,7 @@ public class LoginRegisterController {
     public String login(User user){
         boolean result = loginRegisterService.login(user);
         if(result){
-            return "success";
+            return "home/homePage";
         }else {
             return "error";
         }
