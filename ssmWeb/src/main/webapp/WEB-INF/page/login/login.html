@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>登录页面</title>
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script type="text/javascript" src="/js/jquery.serializeObject.js"></script>
 </head>
 <body>
 <div align="center">
     <h1>信息管理系统</h1>
-    <form action="/loginRegister/login" method="post">
+    <form id="login" action="/loginRegister/login" method="post">
         <label>用户名：</label>
         <label>
             <input type="text" name="loginName">
@@ -19,7 +20,7 @@
             <input type="password" name="password">
         </label><br>
         <label>
-            <button type="submit" name="login">登录</button><!-- onclick="loginSytem()"-->
+            <button type="button" name="login" onclick="loginSystem()">登录</button><!-- -->
             <button type="reset" name="reset">重置</button>
         </label>
     </form>
@@ -27,8 +28,17 @@
 </div>
 </body>
 <script type="text/javascript">
+    function loginSystem() {
+        var url = "/loginRegister/login";
+        var params = $("#login").serializeObject();
+        $.get(url,params,function (result) {
+            alert(result);
+        })
+    }
+
     function register() {
         window.location.replace("/loginRegister/goRegisterView")
     }
+
 </script>
 </html>

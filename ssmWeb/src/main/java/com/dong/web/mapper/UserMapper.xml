@@ -18,11 +18,17 @@
     from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <!--根据用户名称查询用户信息-->
   <select id="selectByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
     from user
     where loginName = #{loginName,jdbcType=VARCHAR}
+  </select>
+  <select id="findUserInfoList" resultMap="User" parameterType="com.dong.web.domain.User" >
+    select
+    <include refid="Base_Column_List" />
+    from user
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user

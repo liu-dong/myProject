@@ -40,7 +40,7 @@ public class LoginRegisterController {
      * @param user
      * @return
      */
-    @RequestMapping(value="/login",method= RequestMethod.POST)
+    @RequestMapping(value="/login",method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public String login(User user){
         boolean result = loginRegisterService.login(user);
         if(result){
