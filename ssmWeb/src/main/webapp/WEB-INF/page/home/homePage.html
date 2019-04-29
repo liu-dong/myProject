@@ -69,7 +69,7 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <table id="personInfoList" lay-filter="test"></table>
-            <img src="/images/background.jpg">
+            <!--<img src="/images/background.jpg">-->
         </div>
     </div>
 
@@ -92,14 +92,25 @@
             url: '/user/findUserInfoList', //数据接口,
             method: 'POST',
             page: true, //开启分页,
+            even: true,
+            skin: 'row',
+            parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": 0, //解析接口状态
+                    "msg": "查询成功", //解析提示文本
+                    "count": 10, //解析数据长度
+                    "data": res //解析数据列表
+                };
+            },
             cols: [[ //表头
-                {field: 'id', title: '主键', width:'15%', fixed: 'left'},
-                {field: 'userName', title: '姓名', width:'15%'},
-                {field: 'sex', title: '性别', width:'10%', sort: true},
-                {field: 'age', title: '年龄', width:'10%', sort: true},
-                {field: 'loginName', title: '用户名', width:'15%'},
-                {field: 'password', title: '密码', width: '15%'},
-                {field: 'id', title: '操作', width: '20%', sort: true}
+                {type: 'numbers', title: '序号', width:'5%' },
+                {field: 'id', title: '主键', width:'15%', fixed: 'left',align: 'center'},
+                {field: 'userName', title: '姓名', width:'15%',align: 'center'},
+                {field: 'sex', title: '性别', width:'10%',align: 'center', sort: true},
+                {field: 'age', title: '年龄', width:'10%',align: 'center', sort: true},
+                {field: 'loginName', title: '用户名', width:'15%',align: 'center'},
+                {field: 'password', title: '密码', width: '15%',align: 'center'},
+                {field: 'id', title: '操作', width: '15%',align: 'center',sort: true}
             ]]
         });
     });

@@ -1,8 +1,10 @@
 package com.dong.web.controller;
 
+import com.dong.common.ReturnResultList;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.IUserService;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,8 +111,12 @@ public class UserController {
     @RequestMapping(value="/findUserInfoList",method=RequestMethod.POST)
     @ResponseBody
     public List<User> findUserInfoList(UserInfoBean bean){
-        List<User> result;
-        result = userService.findUserInfoList(bean);
-        return result;
+        ReturnResultList<User> result = new ReturnResultList<User>();
+        List<User> userList = userService.findUserInfoList(bean);
+        result.setStatus(true);
+        result.setMessage("查询成功");
+        result.setCountTotal(userList.size());
+        result.setDataList(userList);
+        return userList;
     }
 }

@@ -8,8 +8,6 @@ import com.dong.web.service.LoginRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class LoginRegisterServiceImpl implements LoginRegisterService {
 
