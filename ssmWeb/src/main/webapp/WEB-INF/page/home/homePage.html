@@ -92,11 +92,11 @@
 <script>
     $(function () {
         // var path = '${rc.contextPath}';
-        alert(path);
     })
     //JavaScript代码区域
-    layui.use(['element','table'], function(){
+    layui.use(['element','table','laypage'], function(){
         var table = layui.table;
+        var laypage = layui.laypage;
         //第一个实例
         table.render({
             elem: '#personInfoList',
@@ -123,17 +123,25 @@
                 {field: 'loginName', title: '用户名', width:'15%',align: 'center'},
                 {field: 'password', title: '密码', width: '15%',align: 'center'},
                 {fixed: 'right',title: '操作', width: '15%',align: 'center',toolbar: '#toolBarButton'}
-            ]]/*,
+            ]],
             done: function(res, curr, count){
+                laypage.render( {
+                    limit: 10,
+                    limits: [10, 20, 30, 40, 50],
+                    prev: '上一页',
+                    next: '下一页',
+                    first: '首页',
+                    groups: 5,
+                    count: 70 //数据总数，从服务端得到
+                });
                 //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-                var html = "<div>查看</div>";
+                // var html = "<div>查看</div>";
                 console.log(res);
                 //得到当前页码
                 console.log(curr);
                 //得到数据总量
                 console.log(count);
-                return html;
-            }*/
+            }
         });
 
         //监听行工具事件
@@ -158,6 +166,7 @@
                 layer.msg('编辑操作');
             }
         });
+
     });
     //退出登录
     function exitLogin() {
