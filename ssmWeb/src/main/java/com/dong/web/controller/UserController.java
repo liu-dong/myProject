@@ -1,5 +1,6 @@
 package com.dong.web.controller;
 
+import com.dong.common.ResultMap;
 import com.dong.common.ReturnResultList;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
@@ -110,13 +111,19 @@ public class UserController {
 
     @RequestMapping(value="/findUserInfoList",method=RequestMethod.POST)
     @ResponseBody
-    public List<User> findUserInfoList(UserInfoBean bean){
-        ReturnResultList<User> result = new ReturnResultList<User>();
-        List<User> userList = userService.findUserInfoList(bean);
-        result.setStatus(true);
-        result.setMessage("查询成功");
-        result.setCountTotal(userList.size());
-        result.setDataList(userList);
-        return userList;
+    public ResultMap<List<User>> findUserInfoList(UserInfoBean bean, int page, int limit){
+//        ReturnResultList<User> result = new ReturnResultList<User>();
+        List<User> userList = userService.findUserInfoList(bean,page,limit);
+        int countTotal = userService.countUserInfoTotal(bean);
+//        result.setStatus(true);
+//        result.setMessage("查询成功");
+//        result.setCountTotal(userList.size());
+//        result.setDataList(userList);
+        ResultMap<List<User>> result = new ResultMap<List<User>>();
+        result.setCode(0);
+        result.setCount(countTotal);
+        result.setData(userList);
+        result.setMsg("成功！");
+        return result;
     }
 }

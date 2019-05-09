@@ -8,8 +8,9 @@ import com.dong.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service("userService")
@@ -23,10 +24,20 @@ public class UserServiceImpl implements IUserService {
         return this.userDao.selectByPrimaryKey(userId);
     }
 
-    public List<User> findUserInfoList(UserInfoBean bean) {
+    public List<User> findUserInfoList(UserInfoBean bean, int page, int limit) {
         List<User> resultList;
-        resultList = userMapper.findUserInfoList(bean);
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("userInfoBean",bean );
+        map.put("page", (page-1)*limit);
+        map.put("limit", limit);
+        resultList = userMapper.findUserInfoList(map);
         return resultList;
 
+    }
+
+    public int countUserInfoTotal(UserInfoBean bean) {
+        int result = 0;
+        result = userMapper.countUserInfoTotal(bean);
+        return result;
     }
 }

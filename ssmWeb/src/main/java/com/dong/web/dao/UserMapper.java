@@ -4,6 +4,7 @@ import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     int deleteByPrimaryKey(String id);
@@ -16,9 +17,12 @@ public interface UserMapper {
 
     User selectByLoginName(String loginName);
 
-    List<User> findUserInfoList(UserInfoBean bean);
+    List<User> findUserInfoList(Map<String,Object> map);
 
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+
+    int countUserInfoTotal(UserInfoBean bean);
 }

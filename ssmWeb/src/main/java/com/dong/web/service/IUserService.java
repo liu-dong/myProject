@@ -9,5 +9,7 @@ public interface IUserService {
 
     public User getUserById(int userId);
 
-    List<User> findUserInfoList(UserInfoBean bean);
+    List<User> findUserInfoList(UserInfoBean bean, int page, int limit);
+
+    int countUserInfoTotal(UserInfoBean bean);
 }
