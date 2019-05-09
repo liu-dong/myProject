@@ -4,7 +4,9 @@ public class Test {
 
     public static void main(String[] args) {//主函数，程序的入口
         Test test = new Test();//实例化一个对象
-        test.twoMinPrimeNumber(20);//调用方法
+//        test.twoMinPrimeNumber(20);//调用方法
+        String result = test.returnString(6,"1000");
+        System.out.println(result);
     }
 
 
@@ -36,5 +38,9 @@ public class Test {
             }
         }
         System.out.println(x+","+y);//打印输出
+    }
+
+    public String returnString(int num,String str){
+        return String.format("%0" + num + "d", Integer.parseInt(str));
     }
 }
