@@ -6,6 +6,7 @@ import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.IUserService;
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import jdk.nashorn.internal.objects.Global;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +15,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -112,9 +116,9 @@ public class UserController {
     @RequestMapping(value="/findUserInfoList",method=RequestMethod.POST)
     @ResponseBody
     public ResultMap<List<User>> findUserInfoList(UserInfoBean bean, int page, int limit){
-//        ReturnResultList<User> result = new ReturnResultList<User>();
         List<User> userList = userService.findUserInfoList(bean,page,limit);
         int countTotal = userService.countUserInfoTotal(bean);
+//        ReturnResultList<User> result = new ReturnResultList<User>();
 //        result.setStatus(true);
 //        result.setMessage("查询成功");
 //        result.setCountTotal(userList.size());

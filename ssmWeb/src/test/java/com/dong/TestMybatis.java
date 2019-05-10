@@ -1,6 +1,5 @@
 package com.dong;
 
-import com.alibaba.fastjson.JSON;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.IUserService;
@@ -29,7 +28,7 @@ public class TestMybatis {
     @Test
     public void test1() {
         UserInfoBean bean = new UserInfoBean();
-        List<User> userList = userService.findUserInfoList(bean);
+        List<User> userList = userService.findUserInfoList(bean, 1, 10);
          System.out.println(userList);
          logger.info("值："+userList);
     }
