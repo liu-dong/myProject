@@ -1,5 +1,7 @@
 package com.dong.web.controller.loginRegister;
 
+import com.alibaba.fastjson.JSON;
+import com.dong.common.ReturnResult;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.LoginRegisterService;
@@ -31,7 +33,7 @@ public class LoginRegisterController {
 
     @RequestMapping(value="/goRegisterView",method= RequestMethod.GET)
     public String goRegisterView(HttpServletRequest request, Model model){
-        model.addAttribute("systemName", "信息管理系统");
+        model.addAttribute("systemName", JSON.toJSONString("信息管理系统"));
         return "login/register";
     }
 
@@ -41,9 +43,11 @@ public class LoginRegisterController {
      * @return
      */
     @RequestMapping(value="/login",method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public String login(User user){
-        boolean result = loginRegisterService.login(user);
-        if(result){
+    public String login(User user,Model model){
+        ReturnResult<User> result = new ReturnResult<User>();
+        result = loginRegisterService.login(user);
+        model.addAttribute("userName", result.getData().getUserName());
+        if(result.isStatus()){
             return "home/homePage";
         }else {
             return "error";

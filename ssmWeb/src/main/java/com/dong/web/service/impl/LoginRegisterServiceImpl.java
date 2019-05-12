@@ -1,6 +1,7 @@
 package com.dong.web.service.impl;
 
 import com.dong.common.CommonUtils;
+import com.dong.common.ReturnResult;
 import com.dong.web.dao.UserMapper;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
@@ -14,14 +15,15 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
     @Autowired
     UserMapper userMapper;
 
-    public boolean login(User user) {
-        boolean result;
+    public ReturnResult<User> login(User user) {
+        ReturnResult<User> result = new ReturnResult<User>();
         User userEntity = userMapper.selectByLoginName(user.getLoginName());
         if (userEntity != null){
-            result = userEntity.getPassword().equals(user.getPassword());
+            result.setStatus(userEntity.getPassword().equals(user.getPassword()));
         }else {
-            result = false;
+            result.setStatus(false);
         }
+        result.setData(userEntity);
         return result;
     }
 

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,8 +9,7 @@
 </head>
 <body background="/images/background.jpg">
 <div align="center">
-    <h1>信息管理系统</h1>
-    <h1><label for="systemName"></label><input type="text" id="systemName" value="${systemName}"></h1>
+    <h1>${systemName}</h1>
     <form id="login" action="/loginRegister/login" method="post">
         <label>用户名：</label>
         <label>
