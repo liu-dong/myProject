@@ -3,6 +3,8 @@ package com.dong.web.domain;
 public class User {
     private String id;
 
+    private String userType;
+
     private String userName;
 
     private String loginName;
@@ -19,6 +21,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getUserName() {

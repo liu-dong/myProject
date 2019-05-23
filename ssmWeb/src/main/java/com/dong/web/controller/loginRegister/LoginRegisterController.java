@@ -27,7 +27,7 @@ public class LoginRegisterController {
 
     @RequestMapping(value="/goLoginView",method= RequestMethod.GET)
     public String goLoginView(HttpServletRequest request, Model model){
-        model.addAttribute("systemName", "信息管理系统");
+        model.addAttribute("systemName", "医院就诊系统");
         return "login/login";
     }
 
@@ -44,11 +44,16 @@ public class LoginRegisterController {
      */
     @RequestMapping(value="/login",method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public String login(User user,Model model){
-        ReturnResult<User> result = new ReturnResult<User>();
-        result = loginRegisterService.login(user);
+        ReturnResult<User> result = loginRegisterService.login(user);
         model.addAttribute("userName", result.getData().getUserName());
         if(result.isStatus()){
-            return "home/homePage";
+            if ("1".equals(user.getUserType())){
+                return "home/patientHome";
+            }else if("2".equals(user.getUserType())){
+                return "home/doctorHome";
+            }else{
+                return "home/homePageZJX";
+            }
         }else {
             return "error";
         }
