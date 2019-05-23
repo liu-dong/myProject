@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医生介绍</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+    <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script src="/plugin/layui/layui.js"></script>
+</head>
+<body>
+<div class="layui-layout-body">
+    <div class="layui-row">
+        <div align="center" style="padding-top: 15px;">
+            <div class="layui-input-inline">
+                <input type="text" name="title" autocomplete="off" placeholder="请输入医生姓名或科室" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-filter="demo1">搜索一下</button>
+            </div>
+        </div>
+        <div style="height: 95%;">
+            <table id="doctorInfoList" lay-filter="doctorInfoList"></table>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['element','table','laypage'], function(){
+        var table = layui.table;
+        //第一个实例
+        table.render({
+            elem: '#doctorInfoList',
+            height: 500,
+            // url: '/user/findUserInfoList', //数据接口,
+            // method: 'POST',
+            data:[
+                {
+                    "DoctorID": "D0101",
+                    "DoctorName": "王强",
+                    "Sex": "男",
+                    "Age": "51",
+                    "Department": "眼科",
+                    "Position": "主任医师",
+                    "DoctorType": "专家",
+                    "Specialty": "眼镜干涩，易敏感"
+                },
+                {
+                    "DoctorID": "D0102",
+                    "DoctorName": "李蜜",
+                    "Sex": "女",
+                    "Age": "32",
+                    "Department": "眼科",
+                    "Position": "副主任医师",
+                    "DoctorType": "普通",
+                    "Specialty": "近视，模糊不清"
+                },
+                {
+                    "DoctorID": "D0201",
+                    "DoctorName": "向前",
+                    "Sex": "男",
+                    "Age": "32",
+                    "Department": "麻醉科",
+                    "Position": "主治医师",
+                    "DoctorType": "普通",
+                    "Specialty": "局部麻醉"
+                },
+                {
+                    "DoctorID": "D0202",
+                    "DoctorName": "寻找",
+                    "Sex": "女",
+                    "Age": "50",
+                    "Department": "麻醉科",
+                    "Position": "主任医师",
+                    "DoctorType": "专家",
+                    "Specialty": "全身麻醉"
+                },
+                {
+                    "DoctorID": "D0301",
+                    "DoctorName": "张小欣",
+                    "Sex": "女",
+                    "Age": "36",
+                    "Department": "口腔科",
+                    "Position": "主治医师",
+                    "DoctorType": "普通",
+                    "Specialty": "牙齿矫正"
+                },
+                {
+                    "DoctorID": "D0302",
+                    "DoctorName": "刘小东",
+                    "Sex": "男",
+                    "Age": "37",
+                    "Department": "口腔科",
+                    "Position": "主治医师",
+                    "DoctorType": "普通",
+                    "Specialty": "智齿治疗"
+                },
+                {
+                    "DoctorID": "D0401",
+                    "DoctorName": "王千千",
+                    "Sex": "女",
+                    "Age": "42",
+                    "Department": "五官科",
+                    "Position": "主治医师",
+                    "DoctorType": "普通",
+                    "Specialty": "鼻梁修复"
+                },
+                {
+                    "DoctorID": "D0402",
+                    "DoctorName": "郑好",
+                    "Sex": "男",
+                    "Age": "35",
+                    "Department": "五官科",
+                    "Position": "主任医师",
+                    "DoctorType": "专家",
+                    "Specialty": "听力治疗"
+                }
+            ],
+            page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['first', 'prev', 'page', 'next','last','limit', 'count', 'skip'], //自定义分页布局
+                //curr: 5, //设定初始在第 5 页
+                limit: 10,
+                limits: [10, 20, 30, 40, 50],
+                prev: '上一页',
+                next: '下一页',
+                groups: 5, //只显示 5 个连续页码
+                skip: true,
+                first: '首页', //不显示首页
+                last: '尾页'//不显示尾页
+            },
+            even: true,
+            skin: 'row',
+            cols: [[ //表头
+                {type: 'numbers', title: '序号', width:'5%' },
+                {field: 'DoctorID', title: '医生编号', width:'10%',align: 'center'},
+                {field: 'DoctorName', title: '医生姓名', width:'10%',align: 'center'},
+                {field: 'Sex', title: '性别', width:'5%',align: 'center'},
+                {field: 'Age', title: '年龄', width:'5%',align: 'center'},
+                {field: 'Department', title: '所属科室', width:'10%',align: 'center'},
+                {field: 'Position', title: '职称', width:'15%',align: 'center'},
+                {field: 'DoctorType', title: '医生类型', width:'15%',align: 'center'},
+                {field: 'Specialty', title: '擅长治疗', width:'25%',align: 'center'}
+            ]],
+            done: function(res, curr, count){
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

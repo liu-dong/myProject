@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>患者主页</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+    <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script src="/plugin/layui/layui.js"></script>
+    <style>
+        body{
+            height: 720px;
+            width: 1536px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" style="height: 100%;">
+    <div class="layui-row" style="height: 5%">
+        <div class="layui-col-md9">
+            <div class="grid-demo grid-demo-bg1">
+                <img src="/images/homeImg.PNG" style="width: 40px;height: 40px;float: left">
+                <h1 style="float: left">合肥工业大学医院</h1>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+            <div class="grid-demo grid-demo-bg1">
+                <i class="layui-icon layui-icon-username"></i>
+                欢迎您：<span id="userName">张嘉欣</span>
+                <a href="javascript:exitLogin();">退出登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row" style="margin-top: 20px;height: 10%">
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-this"><a href="javascript:void(0);">首页</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/departmentIntroduction.html')">科室介绍</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/doctorIntroduced.html');">医生介绍</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/bookingRegister.html');">预约挂号</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/editBookingRegister.html');">挂号信息</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/doctorIntroduced.html');">看诊缴费</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/caseHistory.html');">病历信息</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/patientPage/prescription.html');">药单信息</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/administratorManagement/noticeList.html');">通知公告</a></li>
+            <li class="layui-nav-item"><a href="javascript:loadPage('/page/administratorManagement/healthInformationList.html');">健康资讯</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-row" style="height: 80%">
+        <iframe id="htmlPage" name="htmlPage" height="100%" width="100%"></iframe>
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+        loadPage("/page/patientPage/homePage.html");
+    });
+
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use(['element'], function(){
+        var element = layui.element;
+    });
+
+    //加载页面
+    function loadPage(url){
+        $("#htmlPage").attr("src",url);
+    }
+
+    //退出登录
+    function exitLogin() {
+        window.location.replace("/loginRegister/goLoginView")
+    }
+</script>
+</body>
+</html>

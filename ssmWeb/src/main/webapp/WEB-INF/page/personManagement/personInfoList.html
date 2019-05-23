@@ -8,11 +8,16 @@
     <script src="/plugin/layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
-<div align="center">
+<div>
     <div style="padding: 15px;height: 95%;">
         <table id="personInfoList" lay-filter="test"></table>
     </div>
 </div>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="insert">新增</button>
+    </div>
+</script>
 <!--操作按钮-->
 <script type="text/html" id="toolBarButton">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
@@ -27,8 +32,108 @@
         table.render({
             elem: '#personInfoList',
             height: 500,
-            url: '/user/findUserInfoList', //数据接口,
-            method: 'POST',
+            // url: '/user/findUserInfoList', //数据接口,
+            // method: 'POST',
+            data: [
+                {
+                    "UserID": "PI001",
+                    "Password": "123456",
+                    "UserType": "患者",
+                    "Telephone": "18756527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "PI002",
+                    "Password": "234567",
+                    "UserType": "患者",
+                    "Telephone": "18786527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "PI003",
+                    "Password": "345678",
+                    "UserType": "患者",
+                    "Telephone": "18756527653",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "DT001",
+                    "Password": "123456",
+                    "UserType": "医生",
+                    "Telephone": "18752537652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "DT002",
+                    "Password": "123457",
+                    "UserType": "医生",
+                    "Telephone": "18856527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "DT003",
+                    "Password": "223456",
+                    "UserType": "医生",
+                    "Telephone": "13756527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "PI004",
+                    "Password": "323456",
+                    "UserType": "患者",
+                    "Telephone": "13556527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "PI005",
+                    "Password": "663456",
+                    "UserType": "患者",
+                    "Telephone": "13856527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "DT004",
+                    "Password": "224756",
+                    "UserType": "医生",
+                    "Telephone": "15156527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "DT005",
+                    "Password": "353456",
+                    "UserType": "医生",
+                    "Telephone": "18836527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "DT006",
+                    "Password": "453456",
+                    "UserType": "医生",
+                    "Telephone": "13736527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                },
+                {
+                    "UserID": "PI006",
+                    "Password": "363456",
+                    "UserType": "患者",
+                    "Telephone": "18256527652",
+                    "Email": "473932705@qq.com",
+                    "IDStatus": "正常"
+                }
+            ],
+            toolbar: '#toolbarDemo',
+            defaultToolbar: false,
             page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                 layout: ['first', 'prev', 'page', 'next','last','limit', 'count', 'skip'], //自定义分页布局
                 //curr: 5, //设定初始在第 5 页
@@ -45,12 +150,14 @@
             skin: 'row',
             cols: [[ //表头
                 {type: 'numbers', title: '序号', width:'5%' },
-                {field: 'id', title: '主键', width:'15%',align: 'center'},
-                {field: 'userName', title: '姓名', width:'15%',align: 'center'},
-                {field: 'sex', title: '性别', width:'10%',align: 'center', sort: true},
-                {field: 'age', title: '年龄', width:'10%',align: 'center', sort: true},
-                {field: 'loginName', title: '用户名', width:'15%',align: 'center'},
-                {field: 'password', title: '密码', width: '15%',align: 'center'},
+                {field: 'UserID', title: '用户名', width:'15%',align: 'center'},
+                {field: 'Password', title: '密码', width: '15%',align: 'center'},
+                {field: 'UserType', title: '用户类型', width:'10%',align: 'center'},
+                // {field: 'userName', title: '姓名', width:'10%',align: 'center'},
+                // {field: 'sex', title: '性别', width:'10%',align: 'center'},
+                {field: 'Telephone', title: '手机号', width:'15%',align: 'center'},
+                {field: 'Email', title: '邮箱', width:'15%',align: 'center'},
+                {field: 'IDStatus', title: '年龄', width:'10%',align: 'center'},
                 {fixed: 'right',title: '操作', width: '15%',align: 'center',toolbar: '#toolBarButton'}
             ]],
             done: function(res, curr, count){
@@ -65,6 +172,20 @@
             }
         });
 
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            switch(obj.event){
+                case 'insert':
+                    layer.open({
+                        type: 2,
+                        title: '查看',
+                        area:['80%','80%'],
+                        content: ['/page/personManagement/personInfoView.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    });
+                    break;
+            }
+        });
+
         //监听行工具事件
         //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
         table.on('tool(test)', function(obj){
@@ -75,7 +196,7 @@
                     type: 2,
                     title: '查看',
                     area:['80%','80%'],
-                    content: ['/page/login/personInfoView.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    content: ['/page/personManagement/personInfoView.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                 });
             } else if(layEvent === 'del'){
                 layer.confirm('真的删除行么', function(index){
@@ -87,30 +208,6 @@
                 layer.msg('编辑操作');
             }
         });
-
-        //分页
-        // laypage.render( {
-        //     elem: 'pageInfo',
-        //     url: '/user/findUserInfoList', //数据接口,
-        //     limit: 10,
-        //     limits: [10, 20, 30, 40, 50],
-        //     prev: '上一页',
-        //     next: '下一页',
-        //     first: '首页',
-        //     last: '尾页',
-        //     groups: 5,
-        //     skip: true,
-        //     count: count, //数据总数，从服务端得到
-        //     jump: function(obj, first){
-        //         //obj包含了当前分页的所有参数，比如：
-        //         console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-        //         console.log(obj.limit); //得到每页显示的条数
-        //         //首次不执行
-        //         if(!first){
-        //             //do something
-        //         }
-        //     }
-        // });
     });
 </script>
 </body>

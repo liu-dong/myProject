@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通知公告列表</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+    <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script src="/plugin/layui/layui.js"></script>
+</head>
+<body class="layui-layout-body">
+<div>
+    <div style="padding: 15px;height: 95%;">
+        <table id="noticeList" lay-filter="noticeList"></table>
+    </div>
+</div>
+</body>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="insert">新增</button>
+    </div>
+</script>
+<!--操作按钮-->
+<script type="text/html" id="toolBarButton">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    //JavaScript代码区域
+    layui.use(['element','table','laypage'], function(){
+        var table = layui.table;
+        //第一个实例
+        table.render({
+            elem: '#noticeList',
+            height: 500,
+            // url: '/json/package.json', //数据接口,
+            // method: 'POST',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: false,
+            data: [
+                {
+                    "NoticeID": "N01",
+                    "Content": "请需要报销医药费的离休干部、高层次引进人才，携带离休证等证件、药费发票、病历、本人工资银行卡等相关材料到指定地点办理报销手续。",
+                    "UpdateTime": "2019-05-10",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N02",
+                    "Content": "兹定于10月17日为离休干部报销2019年下半年度医药费。",
+                    "UpdateTime": "2019-05-09",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N03",
+                    "Content": "今年我校为全体教职员工投保了住院补充医疗保险，承保单位为中国人寿保险股份有限公司合肥支公司，保险期限为2019年1月1日至2019年12月31日。",
+                    "UpdateTime": "2019-05-08",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N04",
+                    "Content": "因疾病或意外伤害住院的职工，办理医保出院手续后，可于保险公司正常工作日在其营业柜面开通的绿色通道理赔。",
+                    "UpdateTime": "2019-05-07",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N05",
+                    "Content": "“遵照学校工作部署，校医院将于5月15日开展全校离退休教职工2019年度体检工作。",
+                    "UpdateTime": "2019-05-06",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N06",
+                    "Content": "“本次需要报销医药费的教职工，请务必携带本人工资银行卡或存折、《医疗保险证》以及定点医院医药费发票及相关病历、转诊单等；保健对象需同时携带本人《干部医疗保健证》。",
+                    "UpdateTime": "2019-05-05",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N07",
+                    "Content": "“本年度内因调动、病故等原因无校内工资银行卡或存折的教职工，凭医药费报销结算凭证到学校财务部门领取现金。",
+                    "UpdateTime": "2019-05-03",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N08",
+                    "Content": "“参保毕业生门诊医药费报销, 必须携带本人学生证原件或复印件、校医院转诊单(急诊除外)、定点医院门诊发票、病历、与学校关联的农行卡，否则无法报销。",
+                    "UpdateTime": "2019-04-29",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N09",
+                    "Content": "“根据学校文件规定，学生报销按保险年度进行，每年报销两次，年度限额为2000元。",
+                    "UpdateTime": "2019-04-27",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N10",
+                    "Content": "因疾病或意外伤害住院的职工，办理医保出院手续后，可于保险公司正常工作日在其营业柜面开通的绿色通道理赔。",
+                    "UpdateTime": "2019-04-25",
+                    "Issuer": "校医院"
+                },
+                {
+                    "NoticeID": "N05",
+                    "Content": "本次需要报销医药费的教职工，请务必携带本人工资银行卡或存折、《医疗保险证》以及定点医院医药费发票及相关病历、转诊单等。",
+                    "UpdateTime": "2019-04-23",
+                    "Issuer": "校医院"
+                }
+            ],
+            page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['first', 'prev', 'page', 'next','last','limit', 'count', 'skip'], //自定义分页布局
+                //curr: 5, //设定初始在第 5 页
+                limit: 10,
+                limits: [10, 20, 30, 40, 50],
+                prev: '上一页',
+                next: '下一页',
+                groups: 5, //只显示 5 个连续页码
+                skip: true,
+                first: '首页', //不显示首页
+                last: '尾页'//不显示尾页
+            },
+            even: true,
+            skin: 'row',
+            cols: [[ //表头
+                {type: 'numbers', title: '序号', width:'5%' },
+                {field: 'NoticeID', title: '公告编号', width:'15%',align: 'center'},
+                {field: 'Content', title: '公告内容', width:'45%',align: 'center'},
+                {field: 'UpdateTime', title: '发布时间', width:'10%',align: 'center'},
+                {field: 'Issuer', title: '发布人', width:'10%',align: 'center'},
+                {fixed: 'right',title: '操作', width: '15%',align: 'center',toolbar: '#toolBarButton'}
+            ]],
+            done: function(res, curr, count){
+            }
+        });
+        //头工具栏事件
+        table.on('toolbar(noticeList)', function(obj){
+            switch(obj.event){
+                case 'insert':
+                    layer.open({
+                        type: 2,
+                        title: '新增',
+                        area:['100%','100%'],
+                        offset: 'auto',
+                        content: ['/page/administratorManagement/editNoticeInfo.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    });
+                    break;
+            }
+        });
+        //监听行工具事件
+        //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        table.on('tool(noticeList)', function(obj){
+            var data = obj.data, //获得当前行数据
+                layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'detail'){
+                layer.open({
+                    type: 2,
+                    title: '查看',
+                    area:['80%','80%'],
+                    content: ['/page/administratorManagement/editNoticeInfo.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                });
+            } else if(layEvent === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if(layEvent === 'edit'){
+                layer.msg('编辑操作');
+            }
+        });
+    });
+</script>
+</html>

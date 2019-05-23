@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增挂号信息</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+    <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script src="/plugin/layui/layui.js"></script>
+    <style>
+        .layui-form-label {
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 670px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
+        <legend style="font-weight: 600;font-size: 24px">预约信息表</legend>
+    </fieldset>
+    <div style="height: 100%;margin: 0 auto;">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">预约单编号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">号源编号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">患者编号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">患者姓名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="releasePerson" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">看诊医生编号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">看诊医生姓名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">看诊科室：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">看诊时间：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="releaseTime" id="releaseTime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">挂号费：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">号源状态：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="noticeNum" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-form-label">
+                    <button class="layui-btn" type="submit" id="submit">修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    layui.use(['form', 'laydate'], function(){
+        var form = layui.form,
+            layer = layui.layer,
+            laydate = layui.laydate;
+
+
+        //日期
+        laydate.render({
+            elem: '#releaseTime'
+        });
+
+    });
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预约挂号</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+    <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script src="/plugin/layui/layui.js"></script>
+</head>
+<body>
+<div class="layui-layout-body">
+    <div class="layui-row">
+        <h1 style="padding-left: 40px;">选择预约挂号方式</h1>
+        <div style="padding: 20px;margin: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md4 layui-col-md-offset2">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <span>方式一</span>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-inline">
+                                    <textarea placeholder="输入您的要求，为您快速推荐医生！" class="layui-textarea" name="noticeContent" style="width: 450px;height: 250px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <span>方式二</span>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-inline">
+                                    <textarea placeholder="先选科室，再选医生，快捷预约医生！" class="layui-textarea" name="noticeContent" style="width: 450px;height: 250px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use(['element'], function(){
+        var element = layui.element;
+    });
+
+</script>
+</body>
+</html>
