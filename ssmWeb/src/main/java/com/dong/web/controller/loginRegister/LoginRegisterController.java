@@ -47,13 +47,7 @@ public class LoginRegisterController {
         ReturnResult<User> result = loginRegisterService.login(user);
         model.addAttribute("userName", result.getData().getUserName());
         if(result.isStatus()){
-            if ("1".equals(user.getUserType())){
-                return "home/patientHome";
-            }else if("2".equals(user.getUserType())){
-                return "home/doctorHome";
-            }else{
-                return "home/homePageZJX";
-            }
+            return "home/homePage";
         }else {
             return "error";
         }
