@@ -9,33 +9,33 @@
     <script type="text/javascript" src="/js/jquery.serializeObject.js"></script>
     <script src="/plugin/layui/layui.js"></script>
     <style>
-        #bodyDiv{
+        /*让背景图片自适应铺满全屏，内容居中*/
+        html{
+            height: 100%;
+        }
+        body{
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background: url(/images/322459.jpg) no-repeat fixed center center;
-            position: fixed;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
+            padding: 0;
+            margin: 0;
+            background: url(/images/322459.jpg) no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            text-align: center;
         }
+        /*让背景图片自适应铺满全屏，内容居中*/
 
         .fontSize{
             font-size: 40px;
             letter-spacing: 12px;
             font-weight: 800;
         }
-        body{
-            height: 720px;
-            width: 1536px;
-        }
     </style>
 </head>
 <body>
-<div align="center" id="bodyDiv">
+<div>
     <div style="padding-top: 100px;">
-        <h1 class="fontSize">医院就诊系统</h1>
+        <h1 class="fontSize">起重机械系统</h1>
     </div>
     <div style="padding-top: 60px;">
         <form id="login" action="/loginRegister/login" method="post" class="layui-form">

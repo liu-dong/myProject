@@ -6,18 +6,34 @@
     <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
     <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
     <script src="/plugin/layui/layui.js"></script>
+    <style>
+
+    </style>
 </head>
 <body class="layui-layout-body">
 <div>
-    <div style="padding: 15px;height: 95%;">
-        <table id="personInfoList" lay-filter="test"></table>
+    <div>
+        <!--页面位置-->
+        <div style="margin: 10px 10px;"><h3>位置：人员管理>>人员信息列表</h3></div>
+        <!--查询条件-->
+        <div>
+            <div id="demoTable" style="padding-left: 10px">
+                <label>姓名：</label>
+                <div class="layui-inline">
+                    <input class="layui-input" name="userName" id="userName" autocomplete="off">
+                </div>
+                性别：
+                <div class="layui-inline">
+                    <input class="layui-input" name="sex" id="sex" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">查询</button>
+                <button class="layui-btn" lay-event="insert">新增</button>
+            </div>
+        </div>
+        <!--数据列表-->
+        <div id="personInfoList" lay-filter="personInfoList"></div>
     </div>
 </div>
-<script type="text/html" id="toolbarDemo">
-    <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="insert">新增</button>
-    </div>
-</script>
 <!--操作按钮-->
 <script type="text/html" id="toolBarButton">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
@@ -27,116 +43,16 @@
 <script>
     //JavaScript代码区域
     layui.use(['element','table','laypage'], function(){
-        var table = layui.table;
-        //第一个实例
+        let table = layui.table;
         table.render({
             elem: '#personInfoList',
+            id: 'infoList',
             height: 500,
-            // url: '/user/findUserInfoList', //数据接口,
-            // method: 'POST',
-            data: [
-                {
-                    "UserID": "PI001",
-                    "Password": "123456",
-                    "UserType": "患者",
-                    "Telephone": "18756527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "PI002",
-                    "Password": "234567",
-                    "UserType": "患者",
-                    "Telephone": "18786527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "PI003",
-                    "Password": "345678",
-                    "UserType": "患者",
-                    "Telephone": "18756527653",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "DT001",
-                    "Password": "123456",
-                    "UserType": "医生",
-                    "Telephone": "18752537652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "DT002",
-                    "Password": "123457",
-                    "UserType": "医生",
-                    "Telephone": "18856527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "DT003",
-                    "Password": "223456",
-                    "UserType": "医生",
-                    "Telephone": "13756527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "PI004",
-                    "Password": "323456",
-                    "UserType": "患者",
-                    "Telephone": "13556527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "PI005",
-                    "Password": "663456",
-                    "UserType": "患者",
-                    "Telephone": "13856527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "DT004",
-                    "Password": "224756",
-                    "UserType": "医生",
-                    "Telephone": "15156527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "DT005",
-                    "Password": "353456",
-                    "UserType": "医生",
-                    "Telephone": "18836527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "DT006",
-                    "Password": "453456",
-                    "UserType": "医生",
-                    "Telephone": "13736527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                },
-                {
-                    "UserID": "PI006",
-                    "Password": "363456",
-                    "UserType": "患者",
-                    "Telephone": "18256527652",
-                    "Email": "473932705@qq.com",
-                    "IDStatus": "正常"
-                }
-            ],
-            toolbar: '#toolbarDemo',
+            url: '/user/findUserInfoList', //数据接口,
+            method: 'POST',
             defaultToolbar: false,
             page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                 layout: ['first', 'prev', 'page', 'next','last','limit', 'count', 'skip'], //自定义分页布局
-                //curr: 5, //设定初始在第 5 页
                 limit: 10,
                 limits: [10, 20, 30, 40, 50],
                 prev: '上一页',
@@ -150,19 +66,16 @@
             skin: 'row',
             cols: [[ //表头
                 {type: 'numbers', title: '序号', width:'5%' },
-                {field: 'UserID', title: '用户名', width:'15%',align: 'center'},
-                {field: 'Password', title: '密码', width: '15%',align: 'center'},
-                {field: 'UserType', title: '用户类型', width:'10%',align: 'center'},
-                // {field: 'userName', title: '姓名', width:'10%',align: 'center'},
-                // {field: 'sex', title: '性别', width:'10%',align: 'center'},
-                {field: 'Telephone', title: '手机号', width:'15%',align: 'center'},
-                {field: 'Email', title: '邮箱', width:'15%',align: 'center'},
-                {field: 'IDStatus', title: '年龄', width:'10%',align: 'center'},
+                {field: 'id', title: '主键', width:'15%',align: 'center'},
+                {field: 'userName', title: '姓名', width:'15%',align: 'center'},
+                {field: 'sex', title: '性别', width:'10%',align: 'center', sort: true},
+                {field: 'age', title: '年龄', width:'10%',align: 'center', sort: true},
+                {field: 'loginName', title: '用户名', width:'15%',align: 'center'},
+                {field: 'password', title: '密码', width: '15%',align: 'center'},
                 {fixed: 'right',title: '操作', width: '15%',align: 'center',toolbar: '#toolBarButton'}
             ]],
             done: function(res, curr, count){
                 //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-
                 // var html = "<div>查看</div>";
                 console.log(res);
                 //得到当前页码
@@ -189,7 +102,7 @@
         //监听行工具事件
         //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
         table.on('tool(test)', function(obj){
-            var data = obj.data, //获得当前行数据
+            let data = obj.data, //获得当前行数据
                 layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
                 layer.open({
@@ -207,6 +120,28 @@
             } else if(layEvent === 'edit'){
                 layer.msg('编辑操作');
             }
+        });
+
+        let active = {
+            reload: function () {
+                let userName = $('#userName');
+                let sex = $('#sex');
+                //执行重载
+                table.reload('infoList', {//重载的列表id
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    },
+                    where: {//根据筛选条件重载
+                        userName: userName.val(),
+                        sex: sex.val()
+                    }
+                });
+            }
+        };
+
+        $('#demoTable .layui-btn').on('click', function(){
+            let type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
     });
 </script>

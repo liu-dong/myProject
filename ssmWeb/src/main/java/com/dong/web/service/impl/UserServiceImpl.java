@@ -27,7 +27,8 @@ public class UserServiceImpl implements IUserService {
     public List<User> findUserInfoList(UserInfoBean bean, int page, int limit) {
         List<User> resultList;
         Map<String,Object> map = new HashMap<String, Object>();
-        map.put("userInfoBean",bean );
+        map.put("userName",bean.getUserName());
+        map.put("sex",bean.getSex());
         map.put("page", (page-1)*limit);
         map.put("limit", limit);
         resultList = userMapper.findUserInfoList(map);

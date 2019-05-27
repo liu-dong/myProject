@@ -118,11 +118,6 @@ public class UserController {
     public ResultMap<List<User>> findUserInfoList(UserInfoBean bean, int page, int limit){
         List<User> userList = userService.findUserInfoList(bean,page,limit);
         int countTotal = userService.countUserInfoTotal(bean);
-//        ReturnResultList<User> result = new ReturnResultList<User>();
-//        result.setStatus(true);
-//        result.setMessage("查询成功");
-//        result.setCountTotal(userList.size());
-//        result.setDataList(userList);
         ResultMap<List<User>> result = new ResultMap<List<User>>();
         result.setCode(0);
         result.setCount(countTotal);
