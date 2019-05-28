@@ -27,7 +27,7 @@
                     <input class="layui-input" name="sex" id="sex" autocomplete="off">
                 </div>
                 <button class="layui-btn" data-type="reload">查询</button>
-                <button class="layui-btn" lay-event="insert">新增</button>
+                <button class="layui-btn" id="editInfo" onclick="editInfo()">新增</button>
             </div>
         </div>
         <!--数据列表-->
@@ -85,19 +85,19 @@
             }
         });
 
-        //头工具栏事件
-        table.on('toolbar(test)', function(obj){
-            switch(obj.event){
-                case 'insert':
-                    layer.open({
-                        type: 2,
-                        title: '查看',
-                        area:['80%','80%'],
-                        content: ['/page/personManagement/personInfoView.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                    });
-                    break;
-            }
-        });
+        // //头工具栏事件
+        // table.on('toolbar(test)', function(obj){
+        //     switch(obj.event){
+        //         case 'insert':
+        //             layer.open({
+        //                 type: 2,
+        //                 title: '查看',
+        //                 area:['80%','80%'],
+        //                 content: ['/page/personManagement/personInfoView.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+        //             });
+        //             break;
+        //     }
+        // });
 
         //监听行工具事件
         //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
@@ -122,6 +122,7 @@
             }
         });
 
+        //表格重载（条件查询）
         let active = {
             reload: function () {
                 let userName = $('#userName');
@@ -143,6 +144,17 @@
             let type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });
+
+
+        $(document).on('click','#editInfo',function(){//绑定事件
+            layer.open({
+                type: 2,
+                title: '新增',
+                area:['80%','80%'],
+                content: ['/page/personManagement/personInfoView.html']
+            });
+        });
+
     });
 </script>
 </body>
