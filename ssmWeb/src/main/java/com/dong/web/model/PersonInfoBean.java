@@ -12,6 +12,9 @@ public class PersonInfoBean {
     private String email;
     private String presentAddress;//现住址
     private String nativePlace;//籍贯
+    private String province;
+    private String city;
+    private String town;
 
     public String getId() {
         return id;
@@ -83,5 +86,29 @@ public class PersonInfoBean {
 
     public void setNativePlace(String nativePlace) {
         this.nativePlace = nativePlace;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 }
