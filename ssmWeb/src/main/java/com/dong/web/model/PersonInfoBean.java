@@ -6,12 +6,13 @@ public class PersonInfoBean {
     private String id;
     private String name;
     private String age;
-    private Date birthdate;//出生日期
+    private String birthdate;//出生日期
     private String sex;
     private String phone;
     private String email;
     private String presentAddress;//现住址
     private String nativePlace;//籍贯
+    private String individualResume;//个人简介
     private String province;
     private String city;
     private String town;
@@ -40,11 +41,11 @@ public class PersonInfoBean {
         this.age = age;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -86,6 +87,14 @@ public class PersonInfoBean {
 
     public void setNativePlace(String nativePlace) {
         this.nativePlace = nativePlace;
+    }
+
+    public String getIndividualResume() {
+        return individualResume;
+    }
+
+    public void setIndividualResume(String individualResume) {
+        this.individualResume = individualResume;
     }
 
     public String getProvince() {

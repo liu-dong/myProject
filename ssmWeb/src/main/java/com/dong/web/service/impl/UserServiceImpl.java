@@ -33,12 +33,9 @@ public class UserServiceImpl implements IUserService {
         map.put("limit", limit);
         resultList = userMapper.findUserInfoList(map);
         return resultList;
-
     }
 
     public int countUserInfoTotal(UserInfoBean bean) {
-        int result = 0;
-        result = userMapper.countUserInfoTotal(bean);
-        return result;
+        return userMapper.countUserInfoTotal(bean);
     }
 }

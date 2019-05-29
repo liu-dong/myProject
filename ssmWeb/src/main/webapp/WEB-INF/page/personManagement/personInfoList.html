@@ -20,7 +20,7 @@
             <div id="demoTable" style="padding-left: 10px">
                 <label>姓名：</label>
                 <div class="layui-inline">
-                    <input class="layui-input" name="userName" id="userName" title="姓名">
+                    <input class="layui-input" name="name" id="name" title="姓名">
                 </div>
                 性别：
                 <div class="layui-inline">
@@ -48,7 +48,7 @@
             elem: '#personInfoList',
             id: 'infoList',
             height: 500,
-            url: '/user/findUserInfoList', //数据接口,
+            url: '/personManagement/findPersonInfoList', //数据接口,
             method: 'POST',
             defaultToolbar: false,
             page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -66,12 +66,13 @@
             skin: 'row',
             cols: [[ //表头
                 {type: 'numbers', title: '序号', width:'5%' },
-                {field: 'id', title: '主键', width:'15%',align: 'center'},
-                {field: 'userName', title: '姓名', width:'15%',align: 'center'},
-                {field: 'sex', title: '性别', width:'10%',align: 'center', sort: true},
-                {field: 'age', title: '年龄', width:'10%',align: 'center', sort: true},
-                {field: 'loginName', title: '用户名', width:'15%',align: 'center'},
-                {field: 'password', title: '密码', width: '15%',align: 'center'},
+                {field: 'name', title: '姓名', width:'10%',align: 'center'},
+                {field: 'sex', title: '性别', width:'7%',align: 'center'},
+                {field: 'age', title: '年龄', width:'8%',align: 'center', sort: true},
+                {field: 'birthdate', title: '出生日期', width:'15%',align: 'center'},
+                {field: 'phone', title: '手机号', width:'15%',align: 'center'},
+                {field: 'email', title: '邮箱', width: '15%',align: 'center'},
+                {field: 'nativePlace', title: '籍贯', width: '10%',align: 'center'},
                 {fixed: 'right',title: '操作', width: '15%',align: 'center',toolbar: '#toolBarButton'}
             ]],
             done: function(res, curr, count){
@@ -101,7 +102,7 @@
 
         //监听行工具事件
         //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-        table.on('tool(test)', function(obj){
+        table.on('tool(personInfoList)', function(obj){
             let data = obj.data, //获得当前行数据
                 layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){

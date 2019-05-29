@@ -1,6 +1,10 @@
 package com.dong.web.dao;
 
 import com.dong.web.domain.Person;
+import com.dong.web.model.PersonInfoBean;
+
+import java.util.List;
+import java.util.Map;
 
 public interface PersonMapper {
     int deleteByPrimaryKey(String id);
@@ -14,4 +18,8 @@ public interface PersonMapper {
     int updateByPrimaryKeySelective(Person record);
 
     int updateByPrimaryKey(Person record);
+
+    List<Person> findPersonInfoList(Map<String, Object> map);
+
+    int countPersonInfoTotal(PersonInfoBean bean);
 }

@@ -21,6 +21,8 @@ public class Person {
 
     private String nativePlace;
 
+    private String individualResume;
+
     public String getId() {
         return id;
     }
@@ -91,5 +93,13 @@ public class Person {
 
     public void setNativePlace(String nativePlace) {
         this.nativePlace = nativePlace == null ? null : nativePlace.trim();
+    }
+
+    public String getIndividualResume() {
+        return individualResume;
+    }
+
+    public void setIndividualResume(String individualResume) {
+        this.individualResume = individualResume == null ? null : individualResume.trim();
     }
 }
