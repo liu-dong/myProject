@@ -4,8 +4,9 @@ import com.dong.common.ResultMap;
 import com.dong.common.ReturnResult;
 import com.dong.web.domain.Person;
 import com.dong.web.model.PersonInfoBean;
-import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.PersonManagementService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,10 +26,12 @@ public class personManagementController {
     @ResponseBody
     public ResultMap<List<Person>> findPersonInfoList(PersonInfoBean bean, int page, int limit){
         ResultMap<List<Person>> result = new ResultMap<List<Person>>();
+        PageHelper.startPage(page,limit);
         List<Person> dataList = personManagementService.findPersonInfoList(bean,page,limit);
-        int countTotal = personManagementService.countPersonInfoTotal(bean);
+        PageInfo<Person> pageInfo = new PageInfo<Person>(dataList);
+//        int countTotal = personManagementService.countPersonInfoTotal(bean);
         result.setCode(0);
-        result.setCount(countTotal);
+        result.setCount((int) pageInfo.getTotal());
         result.setData(dataList);
         result.setMsg("成功！");
         return result;
