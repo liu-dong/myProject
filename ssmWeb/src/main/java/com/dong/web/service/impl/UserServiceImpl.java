@@ -1,5 +1,6 @@
 package com.dong.web.service.impl;
 
+import com.dong.common.ReturnResult;
 import com.dong.web.dao.IUserDao;
 import com.dong.web.dao.UserMapper;
 import com.dong.web.domain.User;
@@ -37,5 +38,14 @@ public class UserServiceImpl implements IUserService {
 
     public int countUserInfoTotal(UserInfoBean bean) {
         return userMapper.countUserInfoTotal(bean);
+    }
+
+    public String getPassword(String userName) {
+        User userEntity = userMapper.selectByLoginName(userName);
+        if (userEntity != null){
+            return userEntity.getPassword();
+        }else {
+            return null;
+        }
     }
 }

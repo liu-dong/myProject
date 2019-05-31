@@ -12,4 +12,6 @@ public interface IUserService {
     List<User> findUserInfoList(UserInfoBean bean, int page, int limit);
 
     int countUserInfoTotal(UserInfoBean bean);
+
+    String getPassword(String userName);
 }

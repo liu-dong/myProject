@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/personManagement")
-public class personManagementController {
+public class PersonManagementController {
 
     @Autowired
     private PersonManagementService personManagementService;
@@ -26,12 +26,13 @@ public class personManagementController {
     @ResponseBody
     public ResultMap<List<Person>> findPersonInfoList(PersonInfoBean bean, int page, int limit){
         ResultMap<List<Person>> result = new ResultMap<List<Person>>();
-        PageHelper.startPage(page,limit);
+//        PageHelper.startPage(page,limit);
         List<Person> dataList = personManagementService.findPersonInfoList(bean,page,limit);
-        PageInfo<Person> pageInfo = new PageInfo<Person>(dataList);
-//        int countTotal = personManagementService.countPersonInfoTotal(bean);
+//        PageInfo<Person> pageInfo = new PageInfo<Person>(dataList);
+        int countTotal = personManagementService.countPersonInfoTotal(bean);
         result.setCode(0);
-        result.setCount((int) pageInfo.getTotal());
+//        result.setCount((int) pageInfo.getTotal());
+        result.setCount(countTotal);
         result.setData(dataList);
         result.setMsg("成功！");
         return result;

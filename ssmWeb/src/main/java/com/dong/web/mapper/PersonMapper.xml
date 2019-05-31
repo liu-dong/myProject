@@ -34,7 +34,7 @@
     <if test="sex != null and sex != '' " >
       and sex  = #{sex}
     </if>
---     limit #{page},#{limit}
+    limit #{page},#{limit}
   </select>
   <!--记录数-->
   <select id="countPersonInfoTotal"  resultType="java.lang.Integer">

@@ -31,23 +31,26 @@
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 配置分页插件 -->
-        <property name="plugins">
-            <array>
-                <bean class="com.github.pagehelper.PageInterceptor">
-                    <property name="properties">
-                        <!-- config params as the following -->
-                        <value>
-                            helperDialect=mysql
-                        </value>
-                    </property>
-                </bean>
-            </array>
-        </property>
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:com/dong/web/mapper/*.xml"/>
 
+        <!-- 配置分页插件 -->
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    &lt;!&ndash;<property name="properties">
+                        &lt;!&ndash; config params as the following &ndash;&gt;
+                        <value>
+                            dialect=mysql
+                            reasonable=true
+                            pageSizeZero=true
+                        </value>
+                    </property>&ndash;&gt;
+                </bean>
+            </array>
+        </property>-->
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
