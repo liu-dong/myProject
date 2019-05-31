@@ -2,7 +2,7 @@ package com.dong;
 
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
-import com.dong.web.service.IUserService;
+import com.dong.web.service.UserService;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import java.util.List;
 public class TestMybatis {
     private static Logger logger = Logger.getLogger(TestMybatis.class);
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
 //  @Before
 //  public void before() {

@@ -1,11 +1,9 @@
 package com.dong.web.service.impl;
 
-import com.dong.common.ReturnResult;
-import com.dong.web.dao.IUserDao;
 import com.dong.web.dao.UserMapper;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
-import com.dong.web.service.IUserService;
+import com.dong.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +12,14 @@ import java.util.List;
 import java.util.Map;
 
 
-@Service("userService")
-public class UserServiceImpl implements IUserService {
-    @Autowired
-    private IUserDao userDao;
+@Service
+public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userMapper;
 
     public User getUserById(int userId) {
-        return this.userDao.selectByPrimaryKey(userId);
+        return null;
     }
 
     public List<User> findUserInfoList(UserInfoBean bean, int page, int limit) {

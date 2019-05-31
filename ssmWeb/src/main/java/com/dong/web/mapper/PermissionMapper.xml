@@ -8,6 +8,13 @@
   <sql id="Base_Column_List" >
     id, permission_name
   </sql>
+  <select id="findPermissionList" resultMap="Permission" parameterType="java.lang.String">
+      SELECT p.* FROM permission p
+      INNER JOIN role_permission rp ON rp.permission_id = p.id
+      INNER JOIN user_role ur ON ur.role_id = rp.role_id
+      INNER JOIN `user` u ON u.id = ur.user_id
+      WHERE u.loginName = #{0}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -22,34 +29,6 @@
     insert into permission (id, permission_name)
     values (#{id,jdbcType=VARCHAR}, #{permissionName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dong.web.domain.Permission" >
-    insert into permission
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="permissionName != null" >
-        permission_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="permissionName != null" >
-        #{permissionName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.domain.Permission" >
-    update permission
-    <set >
-      <if test="permissionName != null" >
-        permission_name = #{permissionName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.Permission" >
     update permission
     set permission_name = #{permissionName,jdbcType=VARCHAR}

@@ -8,6 +8,14 @@
   <sql id="Base_Column_List" >
     id, role_name
   </sql>
+
+  <select id="findRoleList"  parameterType="string" resultType="Role">
+        SELECT r.* FROM role r
+        INNER JOIN user_role ur ON ur.role_id = r.id
+        INNER JOIN `user` u ON u.id = ur.user_id
+        WHERE u.loginName = #{0}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -22,34 +30,6 @@
     insert into role (id, role_name)
     values (#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dong.web.domain.Role" >
-    insert into role
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="roleName != null" >
-        role_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="roleName != null" >
-        #{roleName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.domain.Role" >
-    update role
-    <set >
-      <if test="roleName != null" >
-        role_name = #{roleName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.Role" >
     update role
     set role_name = #{roleName,jdbcType=VARCHAR}

@@ -1,8 +1,8 @@
 package com.dong.config;
 
-import com.dong.web.service.IUserService;
 import com.dong.web.service.PermissionService;
 import com.dong.web.service.RoleService;
+import com.dong.web.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -15,7 +15,7 @@ import java.util.Set;
 public class DatabaseRealm extends AuthorizingRealm {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @Autowired
     private RoleService roleService;
@@ -28,8 +28,8 @@ public class DatabaseRealm extends AuthorizingRealm {
         //能进入到这里，表示账号已经通过验证了
         String userName =(String) principalCollection.getPrimaryPrincipal();
         //通过service获取角色和权限
-        Set<String> permissions = permissionService.listPermissions(userName);
-        Set<String> roles = roleService.listRoles(userName);
+        Set<String> permissions = permissionService.findPermissionList(userName);
+        Set<String> roles = roleService.findRoleList(userName);
 
         //授权对象
         SimpleAuthorizationInfo s = new SimpleAuthorizationInfo();

@@ -1,13 +1,27 @@
 package com.dong.web.service.impl;
 
+import com.dong.web.dao.RoleMapper;
+import com.dong.web.domain.Role;
 import com.dong.web.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-    public Set<String> listRoles(String userName) {
-        return null;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
+    public Set<String> findRoleList(String userName) {
+        Set<String> setResult = new HashSet<String>();
+        List<Role> roleList = roleMapper.findRoleList(userName);
+        for (Role role: roleList) {
+            setResult.add(role.getRoleName());
+        }
+        return setResult;
     }
 }

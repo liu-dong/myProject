@@ -4,7 +4,7 @@ import com.dong.common.ResultMap;
 import com.dong.common.ReturnResultList;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
-import com.dong.web.service.IUserService;
+import com.dong.web.service.UserService;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import jdk.nashorn.internal.objects.Global;
 import org.apache.commons.io.FileUtils;
@@ -36,7 +36,7 @@ public class UserController {
     private static Logger log= LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @RequestMapping(value="/test",method= RequestMethod.GET)
     public String test(HttpServletRequest request, Model model){

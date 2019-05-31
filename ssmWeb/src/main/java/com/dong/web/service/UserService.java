@@ -5,9 +5,9 @@ import com.dong.web.model.UserInfoBean;
 
 import java.util.List;
 
-public interface IUserService {
+public interface UserService {
 
-    public User getUserById(int userId);
+    User getUserById(int userId);
 
     List<User> findUserInfoList(UserInfoBean bean, int page, int limit);
 
