@@ -12,7 +12,11 @@
 
     <properties>
         <!-- spring版本号 -->
-        <spring.version>4.1.2.RELEASE</spring.version>
+        <spring.version>4.0.2.RELEASE</spring.version>
+        <!--
+            Q：一次HTTP-406的错误
+            A:https://blog.csdn.net/zhangtxsir/article/details/79521810
+        -->
         <!-- mybatis版本号 -->
         <mybatis.version>3.2.6</mybatis.version>
         <!-- log4j日志文件管理包版本 -->
@@ -129,11 +133,6 @@
 
         <!-- 格式化对象，方便输出日志 -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.41</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
@@ -146,6 +145,16 @@
         </dependency>
         <!-- log end -->
         <!-- 映入JSON -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.41</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.1.4</version>
+        </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
