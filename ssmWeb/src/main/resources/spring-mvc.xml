@@ -33,14 +33,18 @@
         <property name="resolveLazily" value="true"/>
     </bean>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/" />
+        <property name="suffix" value=".jsp" />
+    </bean>-->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/test/" />
         <property name="suffix" value=".jsp" />
-    </bean>
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    </bean>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/page/" />
         <property name="suffix" value=".html" />
-    </bean>-->
+    </bean>
 
 
     <!--启用shiro注解 -->

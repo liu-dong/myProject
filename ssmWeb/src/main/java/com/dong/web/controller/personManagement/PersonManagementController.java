@@ -6,21 +6,21 @@ import com.dong.web.domain.Person;
 import com.dong.web.model.PersonInfoBean;
 import com.dong.web.service.PersonManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(value = "/personManagement")
 public class PersonManagementController {
 
     @Autowired
     private PersonManagementService personManagementService;
 
-    @RequestMapping(value="/findPersonInfoList",method=RequestMethod.POST)
+    @RequestMapping(value="/findPersonInfoList",method=RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public ResultMap<List<Person>> findPersonInfoList(PersonInfoBean bean, int page, int limit){
         ResultMap<List<Person>> result = new ResultMap<List<Person>>();

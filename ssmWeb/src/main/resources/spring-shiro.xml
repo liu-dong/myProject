@@ -12,7 +12,7 @@
         <!-- 调用我们配置的权限管理器 -->
         <property name="securityManager" ref="securityManager" />
         <!-- 配置我们的登录请求地址 -->
-        <property name="loginUrl" value="/login" />
+        <property name="loginUrl" value="/loginRegister/goLoginView" />
         <!-- 如果您请求的资源不再您的权限范围，则跳转到/403请求地址 -->
         <property name="unauthorizedUrl" value="/unauthorized" />
         <!-- 退出 -->
@@ -26,9 +26,14 @@
             <value>
                 <!-- anon表示此地址不需要任何权限即可访问 -->
                 <!--/loginRegister/goLoginView=anon-->
-                /login=anon
-                /index=anon
-                /static/**=anon
+                /loginRegister/goLoginView=anon
+                //loginRegister/login=anon
+                <!--静态资源不拦截配置-->
+                /css/**=anon
+                /images/**=anon
+                /js/**=anon
+                /plugin/**=anon
+                <!--静态资源不拦截配置-->
                 /doLogout=logout
                 <!--所有的请求(除去配置的静态资源请求或请求地址为anon的请求)都要通过登录验证,如果未登录则跳到/login -->
                 /** = authc

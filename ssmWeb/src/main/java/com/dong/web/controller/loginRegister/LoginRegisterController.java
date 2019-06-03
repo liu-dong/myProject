@@ -5,6 +5,11 @@ import com.dong.common.ReturnResult;
 import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.LoginRegisterService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +50,19 @@ public class LoginRegisterController {
     @RequestMapping(value="/login",method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public String login(User user,Model model){
         ReturnResult<User> result = loginRegisterService.login(user);
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassword());
         model.addAttribute("userName", result.getData().getUserName());
-        if(result.isStatus()){
+        try {
+            subject.login(token);
+            Session session=subject.getSession();
+            session.setAttribute("subject", subject);
+//            return "redirect:indexShiro";
             return "home/homePage";
-        }else {
-            return "error";
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            model.addAttribute("error", "验证失败");
+            return "/error";
         }
     }
 
