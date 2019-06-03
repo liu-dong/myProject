@@ -15,16 +15,17 @@ public class PageController {
         return "indexShiro";
     }
 
-    @RequiresPermissions("deleteOrder")
+    @RequiresPermissions("delete")
     @RequestMapping("deleteOrder")
     public String deleteOrder(){
         return "deleteOrder";
     }
-    @RequiresRoles("admin")
+    @RequiresPermissions("delete")
     @RequestMapping("deleteProduct")
     public String deleteProduct(){
         return "deleteProduct";
     }
+    @RequiresPermissions("select")
     @RequestMapping("listProduct")
     public String listProduct(){
         return "listProduct";
