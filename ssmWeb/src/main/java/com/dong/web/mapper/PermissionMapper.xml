@@ -8,13 +8,15 @@
   <sql id="Base_Column_List" >
     id, permission_name
   </sql>
-  <select id="findPermissionList" resultMap="Permission" parameterType="java.lang.String">
+
+  <select id="findPermissionList" resultMap="BaseResultMap" parameterType="java.lang.String">
       SELECT p.* FROM permission p
       INNER JOIN role_permission rp ON rp.permission_id = p.id
       INNER JOIN user_role ur ON ur.role_id = rp.role_id
       INNER JOIN `user` u ON u.id = ur.user_id
       WHERE u.loginName = #{0}
   </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

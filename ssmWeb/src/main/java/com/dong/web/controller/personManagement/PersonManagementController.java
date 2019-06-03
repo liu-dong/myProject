@@ -5,8 +5,6 @@ import com.dong.common.ReturnResult;
 import com.dong.web.domain.Person;
 import com.dong.web.model.PersonInfoBean;
 import com.dong.web.service.PersonManagementService;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

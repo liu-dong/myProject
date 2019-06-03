@@ -13,11 +13,11 @@ public interface UserMapper {
 
     User selectByPrimaryKey(String id);
 
-    User selectByLoginName(String loginName);
-
-    List<User> findUserInfoList(Map<String,Object> map);
-
     int updateByPrimaryKey(User record);
+
+    List<User> findUserInfoList(Map<String, Object> map);
+
+    User selectUserByLoginName(String loginName);
 
     int countUserInfoTotal(UserInfoBean bean);
 }

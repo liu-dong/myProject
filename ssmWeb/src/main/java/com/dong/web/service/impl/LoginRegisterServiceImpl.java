@@ -17,7 +17,7 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
 
     public ReturnResult<User> login(User user) {
         ReturnResult<User> result = new ReturnResult<User>();
-        User userEntity = userMapper.selectByLoginName(user.getLoginName());
+        User userEntity = userMapper.selectUserByLoginName(user.getLoginName());
         if (userEntity != null){
             result.setStatus(userEntity.getPassword().equals(user.getPassword()));
         }else {

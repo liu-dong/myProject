@@ -12,14 +12,9 @@
   <sql id="Base_Column_List" >
     id, user_name, loginName, password, age, sex
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
+
   <!--根据用户名称查询用户信息-->
-  <select id="selectByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectUserByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
     from user
@@ -29,25 +24,32 @@
     select
     <include refid="Base_Column_List" />
     from user
-      where 1=1
-      <if test="userName != null and userName != '' " >
-          and user_name like concat('%',#{userName},'%')
-      </if>
-      <if test="sex != null and sex != '' " >
-          and sex  = #{sex}
-      </if>
+    where 1=1
+    <if test="userName != null and userName != '' " >
+      and user_name like concat('%',#{userName},'%')
+    </if>
+    <if test="sex != null and sex != '' " >
+      and sex  = #{sex}
+    </if>
     limit #{page},#{limit}
   </select>
   <select id="countUserInfoTotal"  resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM user
-      where 1=1
-      <if test="userName != null and userName != '' " >
-          and user_name like concat('%',#{userName},'%')
-      </if>
-      <if test="sex != null and sex != '' " >
-          and sex  = #{sex}
-      </if>
-   </select>
+    SELECT COUNT(*) FROM user
+    where 1=1
+    <if test="userName != null and userName != '' " >
+      and user_name like concat('%',#{userName},'%')
+    </if>
+    <if test="sex != null and sex != '' " >
+      and sex  = #{sex}
+    </if>
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
     where id = #{id,jdbcType=VARCHAR}
@@ -55,73 +57,9 @@
   <insert id="insert" parameterType="com.dong.web.domain.User" >
     insert into user (id, user_name, loginName, 
       password, age, sex)
-    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR},
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.dong.web.domain.User" >
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userName != null" >
-        user_name,
-      </if>
-      <if test="loginName != null" >
-        loginName,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="age != null" >
-        age,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="loginName != null" >
-        #{loginName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.domain.User" >
-    update user
-    <set >
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="loginName != null" >
-        loginName = #{loginName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.User" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},

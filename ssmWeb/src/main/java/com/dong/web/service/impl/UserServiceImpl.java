@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public String getPassword(String userName) {
-        User userEntity = userMapper.selectByLoginName(userName);
+        User userEntity = userMapper.selectUserByLoginName(userName);
         if (userEntity != null){
             return userEntity.getPassword();
         }else {

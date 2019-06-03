@@ -13,10 +13,5 @@ public interface RoleMapper {
 
     int updateByPrimaryKey(Role record);
 
-    /**
-     * 根据用户名查询角色
-     * @param userName
-     * @return
-     */
     List<Role> findRoleList(String userName);
 }

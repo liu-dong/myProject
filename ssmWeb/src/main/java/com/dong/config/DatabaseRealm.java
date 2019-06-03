@@ -53,7 +53,6 @@ public class DatabaseRealm extends AuthorizingRealm {
             throw new AuthenticationException();
 
         //认证信息里存放账号密码, getName() 是当前Realm的继承方法,通常返回当前类名 :databaseRealm
-        SimpleAuthenticationInfo a = new SimpleAuthenticationInfo(userName,password,getName());
-        return a;
+        return new SimpleAuthenticationInfo(userName,password,getName());
     }
 }
