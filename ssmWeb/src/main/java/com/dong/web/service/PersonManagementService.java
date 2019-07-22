@@ -9,7 +9,15 @@ public interface PersonManagementService {
 
     int savePersonInfo(PersonInfoBean bean) throws Exception;
 
-    List<Person> findPersonInfoList(PersonInfoBean bean, int page, int limit);
+    /**
+     *
+     * @param bean
+     * @param page
+     * @param limit
+     * @return
+     * @throws Exception
+     */
+    List<Person> findPersonInfoList(PersonInfoBean bean, int page, int limit) throws Exception;
 
     int countPersonInfoTotal(PersonInfoBean bean);
 }

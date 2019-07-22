@@ -25,7 +25,12 @@ public class PersonManagementController {
     public ResultMap<List<Person>> findPersonInfoList(PersonInfoBean bean, int page, int limit){
         ResultMap<List<Person>> result = new ResultMap<List<Person>>();
 //        PageHelper.startPage(page,limit);
-        List<Person> dataList = personManagementService.findPersonInfoList(bean,page,limit);
+        List<Person> dataList = null;
+        try {
+            dataList = personManagementService.findPersonInfoList(bean,page,limit);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //        PageInfo<Person> pageInfo = new PageInfo<Person>(dataList);
         int countTotal = personManagementService.countPersonInfoTotal(bean);
         result.setCode(0);

@@ -1,7 +1,5 @@
 package com.dong.web.model;
 
-import java.util.Date;
-
 public class PersonInfoBean {
     private String id;
     private String name;
@@ -16,6 +14,10 @@ public class PersonInfoBean {
     private String province;
     private String city;
     private String town;
+
+    public PersonInfoBean(){
+
+    }
 
     public String getId() {
         return id;
