@@ -4,6 +4,6 @@
     <title>测试</title>
 </head>
 <body>
-    ${user.userName}
+    ${user.username}
 </body>
 </html>

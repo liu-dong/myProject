@@ -1,10 +1,8 @@
 package com.dong.web.service.impl;
 
-import com.dong.common.CommonUtils;
 import com.dong.common.ReturnResult;
-import com.dong.web.dao.UserMapper;
-import com.dong.web.domain.User;
-import com.dong.web.model.UserInfoBean;
+import com.dong.web.dao.D_UserMapper;
+import com.dong.web.domain.D_User;
 import com.dong.web.service.LoginRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class LoginRegisterServiceImpl implements LoginRegisterService {
 
     @Autowired
-    UserMapper userMapper;
+    D_UserMapper userMapper;
 
-    public ReturnResult<User> login(User user) {
-        ReturnResult<User> result = new ReturnResult<User>();
-        User userEntity = userMapper.selectUserByLoginName(user.getLoginName());
+    public ReturnResult<D_User> login(D_User user) {
+        ReturnResult<D_User> result = new ReturnResult<D_User>();
+        D_User userEntity = userMapper.getUserByUsername(user.getUsername());
         if (userEntity != null){
             result.setStatus(userEntity.getPassword().equals(user.getPassword()));
         }else {
@@ -27,15 +25,14 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         return result;
     }
 
-    public User register(UserInfoBean bean) {
-        User user = new User();
+    /*public D_User register(UserInfoBean bean) {
+        D_User user = new D_User();
         user.setId(CommonUtils.getUUID());
-        user.setUserName(bean.getUserName());
-        user.setLoginName(bean.getLoginName());
+        *//*user.setUserName(bean.getUserName());
         user.setPassword(bean.getPassword());
         user.setSex(Integer.parseInt(bean.getSex()));
-        user.setAge(Integer.parseInt(bean.getAge()));
+        user.setAge(Integer.parseInt(bean.getAge()));*//*
         userMapper.insert(user);
         return user;
-    }
+    }*/
 }

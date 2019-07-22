@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,7 +45,7 @@
                     <label class="layui-form-label" style="font-size: 16px;font-weight: 600">用户账号：</label>
                     <div class="layui-input-inline">
                         <label>
-                            <input type="text" name="loginName" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                            <input type="text" name="username" autocomplete="off" placeholder="请输入标题" class="layui-input">
                         </label>
                     </div>
                 </div>
@@ -66,9 +67,9 @@
                         <label>
                             <select name="userType"  class="layui-input">
                                 <option value="">请选择用户类型</option>
-                                <option value="0">管理员</option>
-                                <option value="1">患者</option>
-                                <option value="2">医生</option>
+                                <option value="0">超级管理员</option>
+                                <option value="1">管理员</option>
+                                <option value="2">普通用户</option>
                             </select>
                         </label>
                     </div>
@@ -82,19 +83,21 @@
             <div class="layui-form-item">
                 <label>
                     <button type="submit" name="login" class="layui-btn layui-btn-normal">登录</button><!-- onclick="loginSystem()" -->
-                    <button type="reset" name="reset" class="layui-btn layui-btn-warm" style="margin-left: 48px;">重置</button>
+                    <button type="button" id="register" class="layui-btn layui-btn-warm" style="margin-left: 48px;">注册</button>
+                    <!--<button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">注册</button>-->
                 </label>
             </div>
         </form>
+        <!--<button type="button" id="register" class="layui-btn layui-btn-warm" style="margin-left: 48px;">注册</button>-->
     </div>
-    <!--<button type="button" onclick="register()">注册</button>-->
 </div>
 </body>
 <script type="text/javascript">
-
+    var layer;
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['form'], function(){
+    layui.use(['form','layer'], function(){
         var form = layui.element;
+        layer = layui.layer;
 
         // //表单初始赋值
         // form.val('example', {
@@ -106,20 +109,29 @@
         //     ,"sex": "女"
         //     ,"desc": "我爱 layui"
         // })
+
     });
 
     $(function () {
-        var data = $("#systemName").val();
+        /*var data = $("#systemName").val();
         var val = eval("("+data+")");
-        console.log(val);
+        console.log(val);*/
+
     });
 
-    function register() {
-        window.location.replace("/loginRegister/goRegisterView")
-    }
+    $("#register").click(function(){
+        layer.open({
+            type: 2,
+            title: '注册',
+            area: ['60%', '80%'],
+            content: '/loginRegister/goRegisterView'
+            // content: '/page/login/register.html'
+        });
+    });
 
     function foundPassword() {
         alert("功能建设中！！！")
+        alert(layer);
     }
 </script>
 </html>

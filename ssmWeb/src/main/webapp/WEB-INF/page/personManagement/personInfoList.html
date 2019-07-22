@@ -126,7 +126,7 @@
         //表格重载（条件查询）
         let active = {
             reload: function () {
-                let userName = $('#userName');
+                let username = $('#username');
                 let sex = $('#sex');
                 //执行重载
                 table.reload('infoList', {//重载的列表id
@@ -134,7 +134,7 @@
                         curr: 1 //重新从第 1 页开始
                     },
                     where: {//根据筛选条件重载
-                        userName: userName.val(),
+                        username: username.val(),
                         sex: sex.val()
                     }
                 });

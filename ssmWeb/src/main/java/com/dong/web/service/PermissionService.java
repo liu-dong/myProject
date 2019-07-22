@@ -4,5 +4,5 @@ import java.util.Set;
 
 public interface PermissionService {
 
-    Set<String> findPermissionList(String userName);
+    Set<String> findPermissionList(String username);
 }

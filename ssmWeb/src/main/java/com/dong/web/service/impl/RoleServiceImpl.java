@@ -16,9 +16,9 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleMapper roleMapper;
 
-    public Set<String> findRoleList(String userName) {
+    public Set<String> findRoleList(String username) {
         Set<String> setResult = new HashSet<String>();
-        List<Role> roleList = roleMapper.findRoleList(userName);
+        List<Role> roleList = roleMapper.findRoleList(username);
         for (Role role: roleList) {
             setResult.add(role.getRoleName());
         }

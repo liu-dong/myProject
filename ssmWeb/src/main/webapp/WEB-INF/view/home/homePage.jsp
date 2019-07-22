@@ -25,7 +25,7 @@
         <div class="layui-col-md3">
             <div class="grid-demo grid-demo-bg1">
                 <i class="layui-icon layui-icon-username"></i>
-                欢迎登录：<span id="userName">${userName}</span>
+                欢迎登录：<span id="username">${username}</span>
                 <a href="javascript:exitLogin();">退出登录</a>
             </div>
         </div>

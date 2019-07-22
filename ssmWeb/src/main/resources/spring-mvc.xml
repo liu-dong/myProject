@@ -60,4 +60,5 @@
     <bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
     </bean>
     <bean class="com.dong.config.DefaultExceptionHandler"/>
+
 </beans>

@@ -3,7 +3,7 @@
 <mapper namespace="com.dong.web.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.dong.web.domain.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
     <result column="loginName" property="loginName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
@@ -25,8 +25,8 @@
     <include refid="Base_Column_List" />
     from user
     where 1=1
-    <if test="userName != null and userName != '' " >
-      and user_name like concat('%',#{userName},'%')
+    <if test="username != null and username != '' " >
+      and user_name like concat('%',#{username},'%')
     </if>
     <if test="sex != null and sex != '' " >
       and sex  = #{sex}
@@ -36,8 +36,8 @@
   <select id="countUserInfoTotal"  resultType="java.lang.Integer">
     SELECT COUNT(*) FROM user
     where 1=1
-    <if test="userName != null and userName != '' " >
-      and user_name like concat('%',#{userName},'%')
+    <if test="username != null and username != '' " >
+      and user_name like concat('%',#{username},'%')
     </if>
     <if test="sex != null and sex != '' " >
       and sex  = #{sex}
@@ -57,12 +57,12 @@
   <insert id="insert" parameterType="com.dong.web.domain.User" >
     insert into user (id, user_name, loginName, 
       password, age, sex)
-    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.User" >
     update user
-    set user_name = #{userName,jdbcType=VARCHAR},
+    set user_name = #{username,jdbcType=VARCHAR},
       loginName = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},

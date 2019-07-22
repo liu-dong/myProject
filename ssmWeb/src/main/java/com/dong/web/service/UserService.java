@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface UserService {
 
-    User getUserById(int userId);
+    User getUserById(String id);
 
     List<User> findUserInfoList(UserInfoBean bean, int page, int limit);
 
     int countUserInfoTotal(UserInfoBean bean);
 
-    String getPassword(String userName);
+    String getPassword(String username);
 }

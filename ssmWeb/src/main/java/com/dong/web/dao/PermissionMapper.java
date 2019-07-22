@@ -13,5 +13,5 @@ public interface PermissionMapper {
 
     int updateByPrimaryKey(Permission record);
 
-    List<Permission> findPermissionList(String userName);
+    List<Permission> findPermissionList(String username);
 }

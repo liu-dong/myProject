@@ -34,12 +34,12 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="user" domainObjectName="User"
+        <table tableName="d_user" domainObjectName="D_User"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
-        <table tableName="person" domainObjectName="Person"
+        <!--<table tableName="person" domainObjectName="Person"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -63,6 +63,6 @@
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
     </context>
 </generatorConfiguration>

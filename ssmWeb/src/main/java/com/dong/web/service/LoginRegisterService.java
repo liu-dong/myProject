@@ -1,14 +1,13 @@
 package com.dong.web.service;
 
 import com.dong.common.ReturnResult;
-import com.dong.web.domain.User;
-import com.dong.web.model.UserInfoBean;
+import com.dong.web.domain.D_User;
 
 public interface LoginRegisterService {
 
-    ReturnResult<User> login(User user);
+    ReturnResult<D_User> login(D_User user);
 
-    User register(UserInfoBean bean);
+//    D_User register(UserInfoBean bean);
 
 
 }

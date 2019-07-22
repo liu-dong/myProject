@@ -18,14 +18,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public User getUserById(int userId) {
+    public User getUserById(String userId) {
         return null;
     }
 
     public List<User> findUserInfoList(UserInfoBean bean, int page, int limit) {
         List<User> resultList;
         Map<String,Object> map = new HashMap<String, Object>();
-        map.put("userName",bean.getUserName());
+        map.put("username",bean.getUserName());
         map.put("sex",bean.getSex());
         map.put("page", (page-1)*limit);
         map.put("limit", limit);
@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
         return userMapper.countUserInfoTotal(bean);
     }
 
-    public String getPassword(String userName) {
-        User userEntity = userMapper.selectUserByLoginName(userName);
+    public String getPassword(String username) {
+        User userEntity = userMapper.selectUserByLoginName(username);
         if (userEntity != null){
             return userEntity.getPassword();
         }else {

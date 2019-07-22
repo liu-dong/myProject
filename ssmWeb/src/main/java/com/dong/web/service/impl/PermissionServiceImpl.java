@@ -16,9 +16,9 @@ public class PermissionServiceImpl implements PermissionService {
     @Autowired
     private PermissionMapper permissionMapper;
 
-    public Set<String> findPermissionList(String userName) {
+    public Set<String> findPermissionList(String username) {
         Set<String> setResult = new HashSet<String>();
-        List<Permission> permissionList = permissionMapper.findPermissionList(userName);
+        List<Permission> permissionList = permissionMapper.findPermissionList(username);
         for (Permission permission: permissionList) {
             setResult.add(permission.getPermissionName());
         }

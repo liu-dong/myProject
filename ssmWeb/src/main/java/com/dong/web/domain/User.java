@@ -5,7 +5,7 @@ public class User {
 
     private String userType;
 
-    private String userName;
+    private String username;
 
     private String loginName;
 
@@ -32,11 +32,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUserName(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getLoginName() {

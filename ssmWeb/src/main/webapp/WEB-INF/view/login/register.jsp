@@ -11,7 +11,7 @@
     <form action="/loginRegister/register" method="post">
         <label>姓名&emsp;：</label>
         <label>
-            <input type="text" name="userName" id="userName">
+            <input type="text" name="username" id="username">
         </label><br>
         <label>用户名：</label>
         <label>

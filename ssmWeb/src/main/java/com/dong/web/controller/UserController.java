@@ -8,18 +8,18 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -49,7 +49,7 @@ public class UserController {
         return "home";
     }
 
-    @RequestMapping(value="/showUser",method=RequestMethod.GET)
+    /*@RequestMapping(value="/showUser",method=RequestMethod.GET)
     public String toIndex(HttpServletRequest request,Model model){
         int userId = Integer.parseInt(request.getParameter("id"));
         System.out.println("userId:"+userId);
@@ -57,10 +57,10 @@ public class UserController {
         log.debug(user.toString());
         model.addAttribute("user", user);
         return "showUser";
-    }
+    }*/
 
     // /user/showUser3/{id}
-    @RequestMapping(value="/showUser3/{id}",method=RequestMethod.GET)
+    /*@RequestMapping(value="/showUser3/{id}",method=RequestMethod.GET)
     public String toIndex3(@PathVariable("id")String id, Map<String, Object> model){
         int userId = Integer.parseInt(id);
         System.out.println("userId:"+userId);
@@ -68,10 +68,10 @@ public class UserController {
         log.debug(user.toString());
         model.put("user", user);
         return "showUser";
-    }
+    }*/
 
     // /user/{id}
-    @RequestMapping(value="/{id}",method=RequestMethod.GET)
+   /* @RequestMapping(value="/{id}",method=RequestMethod.GET)
     @ResponseBody
     public User getUserInJson(@PathVariable String id, Map<String, Object> model){
         int userId = Integer.parseInt(id);
@@ -79,17 +79,17 @@ public class UserController {
         User user = this.userService.getUserById(userId);
         log.info(user.toString());
         return user;
-    }
+    }*/
 
     // /user/{id}
-    @RequestMapping(value="/jsonType/{id}",method=RequestMethod.GET)
+    /*@RequestMapping(value="/jsonType/{id}",method=RequestMethod.GET)
     public ResponseEntity<User> getUserInJson2(@PathVariable String id, Map<String, Object> model){
         int userId = Integer.parseInt(id);
         System.out.println("userId:"+userId);
         User user = this.userService.getUserById(userId);
         log.info(user.toString());
         return new ResponseEntity<User>(user, HttpStatus.OK);
-    }
+    }*/
 
     //文件上传、
     @RequestMapping(value="/upload")
