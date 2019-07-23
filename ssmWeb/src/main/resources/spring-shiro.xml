@@ -25,9 +25,9 @@
         <property name="filterChainDefinitions">
             <value>
                 <!-- anon表示此地址不需要任何权限即可访问 -->
-                /loginRegister/goLoginView=anon
-                /loginRegister/goRegisterView=anon
-                /loginRegister/login=anon
+                /loginRegister/**=anon
+                <!--/loginRegister/goRegisterView=anon
+                /loginRegister/login=anon-->
                 <!--静态资源不拦截配置-->
                 /css/**=anon
                 /images/**=anon

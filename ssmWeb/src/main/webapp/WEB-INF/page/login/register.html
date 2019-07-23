@@ -10,131 +10,106 @@
     <script src="/plugin/layui/layui.js"></script>
 </head>
 <body>
-<div>
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-        <legend>注册</legend>
-    </fieldset>
-    <form class="layui-form layui-form-pane" action="">
+<div style="margin: 20px 15px;">
+    <form id="register" action="/loginRegister/register" method="post" class="layui-form">
         <div class="layui-form-item">
-            <label class="layui-form-label">长输入框</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">短输入框</label>
-            <div class="layui-input-inline">
-                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">日期选择</label>
-                <div class="layui-input-block">
-                    <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
-                </div>
-            </div>
             <div class="layui-inline">
                 <label class="layui-form-label">用户名</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="number" autocomplete="off" class="layui-input">
+                    <input type="text" name="username" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">密码</label>
-            <div class="layui-input-inline">
-                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <div class="layui-inline">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
             </div>
-            <div class="layui-form-mid layui-word-aux">请务必填写用户名</div>
+            <div class="layui-inline">
+                <label class="layui-form-label">身份证号</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="identityCard" autocomplete="off" class="layui-input">
+                </div>
+            </div>
         </div>
-
         <div class="layui-form-item">
-            <label class="layui-form-label">用户类型</label>
-            <div class="layui-input-block">
-                <select name="interest" lay-filter="aihao">
-                    <option value=""></option>
-                    <option value="0">写作</option>
-                    <option value="1" selected="">阅读</option>
-                    <option value="2">游戏</option>
-                    <option value="3">音乐</option>
-                    <option value="4">旅行</option>
-                </select>
+            <div class="layui-inline">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="sex" value="0" title="男" checked="checked" class="layui-input">
+                    <input type="radio" name="sex" value="1" title="女" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">籍贯</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="nativePlace" autocomplete="off" class="layui-input">
+                </div>
             </div>
         </div>
-
         <div class="layui-form-item">
-            <label class="layui-form-label">用户类型</label>
-            <div class="layui-input-inline">
-                <select name="quiz1">
-                    <option value="">请选择省</option>
-                    <option value="浙江" selected="">浙江省</option>
-                    <option value="你的工号">江西省</option>
-                    <option value="你最喜欢的老师">福建省</option>
-                </select>
+            <div class="layui-inline">
+                <label class="layui-form-label">出生日期</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="birthdate" id="birthdate" autocomplete="off" class="layui-input">
+                </div>
             </div>
-            <div class="layui-input-inline">
-                <select name="quiz2">
-                    <option value="">请选择市</option>
-                    <option value="杭州">杭州</option>
-                    <option value="宁波" disabled="">宁波</option>
-                    <option value="温州">温州</option>
-                    <option value="温州">台州</option>
-                    <option value="温州">绍兴</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="quiz3">
-                    <option value="">请选择县/区</option>
-                    <option value="西湖区">西湖区</option>
-                    <option value="余杭区">余杭区</option>
-                    <option value="拱墅区">临安市</option>
-                </select>
+            <div class="layui-inline">
+                <label class="layui-form-label">年龄</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="age" autocomplete="off" class="layui-input">
+                </div>
             </div>
         </div>
-        <div class="layui-form-item" pane="">
-            <label class="layui-form-label">开关-开</label>
-            <div class="layui-input-block">
-                <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">手机</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="phone" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="email" autocomplete="off" class="layui-input">
+                </div>
             </div>
         </div>
-        <div class="layui-form-item" pane="">
-            <label class="layui-form-label">性别</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">现住址</label>
             <div class="layui-input-block">
-                <input type="radio" name="sex" value="男" title="男" checked="">
-                <input type="radio" name="sex" value="女" title="女">
-                <input type="radio" name="sex" value="禁" title="禁用" disabled="">
+                <input type="text" name="presentAddress" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">个人简介</label>
             <div class="layui-input-block">
-                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                <textarea name="individualResume" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
-            <button class="layui-btn" lay-submit="" lay-filter="demo2">确定</button>
+            <button type="submit" class="layui-btn">注册</button>
         </div>
     </form>
 </div>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
-            ,layer = layui.layer
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
 
         //日期
         laydate.render({
-            elem: '#date'
+            elem: '#birthdate'
         });
-        laydate.render({
-            elem: '#date1'
-        });
-
-        //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
 
         //自定义验证规则
         form.verify({
@@ -152,34 +127,13 @@
             }
         });
 
-        //监听指定开关
-        form.on('switch(switchTest)', function(data){
-            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
-
         //监听提交
-        form.on('submit(demo1)', function(data){
+        /*form.on('submit(submit)', function(data){
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             })
             return false;
-        });
-
-        //表单初始赋值
-        form.val('example', {
-            "username": "贤心" // "name": "value"
-            ,"password": "123456"
-            ,"interest": 1
-            ,"like[write]": true //复选框选中状态
-            ,"close": true //开关状态
-            ,"sex": "女"
-            ,"desc": "我爱 layui"
-        })
-
-
+        });*/
     });
 </script>
 </body>

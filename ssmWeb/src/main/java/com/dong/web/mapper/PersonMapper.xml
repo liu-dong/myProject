@@ -1,72 +1,78 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dong.web.dao.PersonMapper" >
-  <resultMap id="BaseResultMap" type="com.dong.web.domain.Person" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="INTEGER" />
-    <result column="birthdate" property="birthdate" jdbcType="TIMESTAMP" />
-    <result column="sex" property="sex" jdbcType="SMALLINT" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="present_address" property="presentAddress" jdbcType="VARCHAR" />
-    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
-    <result column="individual_resume" property="individualResume" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dong.web.dao.PersonMapper">
+  <resultMap id="BaseResultMap" type="com.dong.web.domain.Person">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="identity_card" jdbcType="VARCHAR" property="identityCard" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="birthdate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="sex" jdbcType="SMALLINT" property="sex" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="present_address" jdbcType="VARCHAR" property="presentAddress" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="individual_resume" jdbcType="VARCHAR" property="individualResume" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, age, birthdate, sex, phone, email, present_address, native_place, individual_resume
+  <sql id="Base_Column_List">
+    id, name, identity_card, age, birthdate, sex, phone, email, present_address, native_place, 
+    individual_resume, create_time, update_time
   </sql>
-
   <!--列表条件查询-->
-  <select id="findPersonInfoList" resultMap="BaseResultMap" parameterType="map">
+  <select id="findPersonInfoList" parameterType="map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from person
     where 1=1
-    <if test="name != null and name != '' " >
+    <if test="name != null and name != '' ">
       and name like concat('%',#{name},'%')
     </if>
-    <if test="sex != null and sex != '' " >
+    <if test="sex != null and sex != '' ">
       and sex  = #{sex}
     </if>
     limit #{page},#{limit}
   </select>
 
   <!--记录数-->
-  <select id="countPersonInfoTotal"  resultType="java.lang.Integer">
+  <select id="countPersonInfoTotal" resultType="java.lang.Integer">
     select count(*) from person
     where 1=1
-    <if test="name != null and name != '' " >
+    <if test="name != null and name != '' ">
       and name like concat('%',#{name},'%')
     </if>
-    <if test="sex != null and sex != '' " >
+    <if test="sex != null and sex != '' ">
       and sex  = #{sex}
     </if>
   </select>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
     from person
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from person
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.dong.web.domain.Person" >
-    insert into person (id, name, age, 
-      birthdate, sex, phone, 
-      email, present_address, native_place, 
-      individual_resume)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{birthdate,jdbcType=TIMESTAMP}, #{sex,jdbcType=SMALLINT}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{presentAddress,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
-      #{individualResume,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.dong.web.domain.Person">
+    insert into person (id, name, identity_card,
+      age, birthdate, sex,
+      phone, email, present_address,
+      native_place, individual_resume, create_time,
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{identityCard,jdbcType=VARCHAR},
+      #{age,jdbcType=INTEGER}, #{birthdate,jdbcType=TIMESTAMP}, #{sex,jdbcType=SMALLINT},
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{presentAddress,jdbcType=VARCHAR},
+      #{nativePlace,jdbcType=VARCHAR}, #{individualResume,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.Person" >
+  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.Person">
     update person
     set name = #{name,jdbcType=VARCHAR},
+      identity_card = #{identityCard,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       birthdate = #{birthdate,jdbcType=TIMESTAMP},
       sex = #{sex,jdbcType=SMALLINT},
@@ -74,7 +80,9 @@
       email = #{email,jdbcType=VARCHAR},
       present_address = #{presentAddress,jdbcType=VARCHAR},
       native_place = #{nativePlace,jdbcType=VARCHAR},
-      individual_resume = #{individualResume,jdbcType=VARCHAR}
+      individual_resume = #{individualResume,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
