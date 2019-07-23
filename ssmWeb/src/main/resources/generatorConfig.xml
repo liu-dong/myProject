@@ -34,7 +34,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="d_user" domainObjectName="D_User"
+        <table tableName="person" domainObjectName="Person"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

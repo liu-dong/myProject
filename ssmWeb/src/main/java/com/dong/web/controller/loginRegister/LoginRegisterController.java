@@ -3,6 +3,7 @@ package com.dong.web.controller.loginRegister;
 import com.alibaba.fastjson.JSON;
 import com.dong.common.ReturnResult;
 import com.dong.web.domain.D_User;
+import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.LoginRegisterService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,7 +48,7 @@ public class LoginRegisterController {
      * @param user
      * @return
      */
-    @RequestMapping(value="/login",method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value="/login", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public String login(D_User user, Model model){
         ReturnResult<D_User> result = loginRegisterService.login(user);
         Subject subject = SecurityUtils.getSubject();
@@ -70,10 +72,10 @@ public class LoginRegisterController {
      * @param bean
      * @return
      */
-    /*@RequestMapping(value="/register",method= RequestMethod.POST)
+    @RequestMapping(value="/register", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public User register(UserInfoBean bean){
-        User user = loginRegisterService.register(bean);
+    public D_User register(UserInfoBean bean){
+        D_User user = loginRegisterService.register(bean);
         return user;
-    }*/
+    }
 }
