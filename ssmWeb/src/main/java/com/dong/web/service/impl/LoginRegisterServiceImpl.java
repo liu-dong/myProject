@@ -59,12 +59,9 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         person.setId(personId);
         person.setName(bean.getName());
         person.setIdentityCard(bean.getIdentityCard());
-        if (!StringUtils.isEmpty(bean.getAge())) {
+//        if (!StringUtils.isEmpty(bean.getAge())) {
             person.setAge(Integer.parseInt(bean.getAge()));
-        }
-        if (!StringUtils.isEmpty(bean.getAge())) {
-            person.setAge(Integer.parseInt(bean.getAge()));
-        }
+//        }
         try {
             person.setBirthdate(sdf.parse(bean.getBirthdate()));
         } catch (ParseException e) {
