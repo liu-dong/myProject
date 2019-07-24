@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ public class PersonManagementServiceImpl implements PersonManagementService {
     private PersonMapper personMapper;
 
 
+    @Override
     public List<Person> findPersonInfoList(PersonInfoBean bean, int page, int limit) {
         List<Person> resultList;
         Map<String,Object> map = new HashMap<String, Object>();
@@ -32,26 +34,32 @@ public class PersonManagementServiceImpl implements PersonManagementService {
         return resultList;
     }
 
+    @Override
     public int countPersonInfoTotal(PersonInfoBean bean) {
         return personMapper.countPersonInfoTotal(bean);
     }
 
+    @Override
     public int savePersonInfo(PersonInfoBean bean) throws Exception {
         int state = 0;//0：失败、1：成功
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         Person person = new Person();
         person.setId(CommonUtils.getUUID());
         person.setName(bean.getName());
-        person.setAge(Integer.parseInt(bean.getAge()));
-        person.setSex(Short.parseShort(bean.getSex()));
-        if(!StringUtils.isEmpty(bean.getBirthdate())){
-            person.setBirthdate(sdf.parse(bean.getBirthdate()));
+        person.setIdentityCard(bean.getIdentityCard());
+        if (!StringUtils.isEmpty(bean.getAge())) {
+            person.setAge(Integer.parseInt(bean.getAge()));
         }
-        person.setEmail(bean.getEmail());
+        person.setBirthdate(sdf.parse(bean.getBirthdate()));
+        if (!StringUtils.isEmpty(bean.getSex())) {
+            person.setSex(Short.parseShort(bean.getSex()));
+        }
         person.setPhone(bean.getPhone());
+        person.setEmail(bean.getEmail());
+        person.setPresentAddress(bean.getPresentAddress());
         person.setNativePlace(bean.getNativePlace());
-        person.setPresentAddress(bean.getProvince()+bean.getCity()+bean.getTown());
         person.setIndividualResume(bean.getIndividualResume());
+        person.setCreateTime(new Date());
         state = personMapper.insert(person);
         return state;
     }

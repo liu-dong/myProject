@@ -3,6 +3,7 @@ package com.dong.web.model;
 public class PersonInfoBean {
     private String id;
     private String name;
+    private String identityCard;//身份证号
     private String age;
     private String birthdate;//出生日期
     private String sex;
@@ -121,5 +122,13 @@ public class PersonInfoBean {
 
     public void setTown(String town) {
         this.town = town;
+    }
+
+    public String getIdentityCard() {
+        return identityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
     }
 }

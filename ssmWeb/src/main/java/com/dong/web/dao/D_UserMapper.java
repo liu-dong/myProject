@@ -7,11 +7,7 @@ public interface D_UserMapper {
 
     int insert(D_User record);
 
-    int insertSelective(D_User record);
-
     D_User selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(D_User record);
 
     int updateByPrimaryKey(D_User record);
 

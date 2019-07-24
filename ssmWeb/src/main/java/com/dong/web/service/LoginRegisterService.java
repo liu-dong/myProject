@@ -10,5 +10,5 @@ public interface LoginRegisterService {
 
     D_User register(UserInfoBean bean);
 
-
+    String getPassword(String username);
 }

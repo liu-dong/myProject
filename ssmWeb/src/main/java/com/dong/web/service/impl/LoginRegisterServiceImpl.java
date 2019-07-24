@@ -59,9 +59,9 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         person.setId(personId);
         person.setName(bean.getName());
         person.setIdentityCard(bean.getIdentityCard());
-//        if (!StringUtils.isEmpty(bean.getAge())) {
+        if (!StringUtils.isEmpty(bean.getAge())) {
             person.setAge(Integer.parseInt(bean.getAge()));
-//        }
+        }
         try {
             person.setBirthdate(sdf.parse(bean.getBirthdate()));
         } catch (ParseException e) {
@@ -78,5 +78,15 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         person.setCreateTime(new Date());
         personMapper.insert(person);
         return user;
+    }
+
+    @Override
+    public String getPassword(String username) {
+        D_User userEntity = userMapper.getUserByUsername(username);
+        if (userEntity != null){
+            return userEntity.getPassword();
+        }else {
+            return null;
+        }
     }
 }

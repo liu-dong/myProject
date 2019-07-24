@@ -1,14 +1,14 @@
 package com.dong.web.service;
 
-import com.dong.web.domain.User;
+import com.dong.web.domain.D_User;
 
 public interface UserService {
 
-    User getUserById(String id);
+    D_User getUserById(String id);
 
     /*List<User> findUserInfoList(UserInfoBean bean, int page, int limit);
 
-    int countUserInfoTotal(UserInfoBean bean);*/
+    int countUserInfoTotal(UserInfoBean bean);
 
-    String getPassword(String username);
+    String getPassword(String username);*/
 }

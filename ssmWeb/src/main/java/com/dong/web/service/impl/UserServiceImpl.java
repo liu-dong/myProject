@@ -1,28 +1,18 @@
 package com.dong.web.service.impl;
 
-import com.dong.web.dao.UserMapper;
-import com.dong.web.domain.User;
-import com.dong.web.model.UserInfoBean;
+import com.dong.web.domain.D_User;
 import com.dong.web.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    public User getUserById(String userId) {
+    public D_User getUserById(String userId) {
         return null;
     }
 
-    public List<User> findUserInfoList(UserInfoBean bean, int page, int limit) {
+    /*public List<User> findUserInfoList(UserInfoBean bean, int page, int limit) {
         List<User> resultList;
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("username",bean.getUsername());
@@ -44,5 +34,5 @@ public class UserServiceImpl implements UserService {
         }else {
             return null;
         }
-    }
+    }*/
 }

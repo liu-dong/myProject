@@ -42,8 +42,9 @@
 </script>
 <script>
     //JavaScript代码区域
-    layui.use(['element','table','laypage'], function(){
+    layui.use(['element','table','laypage','layer'], function(){
         let table = layui.table;
+        let layer = layui.layer;
         table.render({
             elem: '#personInfoList',
             id: 'infoList',
@@ -147,12 +148,12 @@
         });
 
 
-        $(document).on('click','#editInfo',function(){//绑定事件
+        $("#editInfo").click(function(){//绑定事件
             layer.open({
                 type: 2,
-                title: '新增',
-                area:['80%','80%'],
-                content: ['/page/personManagement/personInfoView.html']
+                title: '人员信息',
+                area:['60%','95%'],
+                content: ['/page/personManagement/personInfoView.html','no']
             });
         });
 
