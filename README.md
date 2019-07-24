@@ -9,3 +9,7 @@
 
 2019/03/26
 完成Spring+SpringMVC+MyBatis的整合与测试
+
+2019/07/23
+完成登录注册功能，shiro安全验证功能
+
