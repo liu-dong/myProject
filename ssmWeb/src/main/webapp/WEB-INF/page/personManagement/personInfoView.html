@@ -5,6 +5,7 @@
     <title>人员信息页面</title>
     <link rel="stylesheet" href="/plugin/layui/css/layui.css" />
     <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
+    <script type="text/javascript" src="/js/jquery.serializeObject.js"></script>
     <script src="/plugin/layui/layui.js"></script>
     <style>
         /*body{
@@ -112,7 +113,7 @@
         });
 
         //监听提交
-        form.on('submit(demo1)', function(data){
+        /*form.on('submit(demo1)', function(data){
             console.log(data);
             $.ajax({
                 url:"/personManagement/savePersonInfo",
@@ -129,13 +130,16 @@
                     }
                 }
             })
-        });
+        });*/
     });
     
     function saveInfo() {
         let url = "/personManagement/savePersonInfo";
-        let params = {"name":"11"};//$("#form_panel").serializeObject();
+        let params = $("#form_panel").serializeObject();//{"name":"11"};//
+        alert(params);
+        console.log(params);
         $.post(url,params,function(data){
+            debugger
             console.log(data);
         });
     }

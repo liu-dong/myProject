@@ -47,7 +47,7 @@ public class PersonManagementController {
      * @return
      */
     @RequestMapping(value = "/savePersonInfo",method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-//    @ResponseBody
+    @ResponseBody
     public ReturnResult<PersonInfoBean> savePersonInfo(PersonInfoBean bean){
         ReturnResult<PersonInfoBean> result = new ReturnResult<PersonInfoBean>();
         try {
