@@ -136,11 +136,28 @@
     function saveInfo() {
         let url = "/personManagement/savePersonInfo";
         let params = $("#form_panel").serializeObject();//{"name":"11"};//
-        alert(params);
         console.log(params);
-        $.post(url,params,function(data){
+        /*$.post(url,params,function(data){
             debugger
             console.log(data);
+        });*/
+        $.ajax({
+            url:url,
+            type:"GET",
+            contentType: "application/json",
+            data:params,
+            /*data:JSON.stringify({
+                "username":"user666",
+                "password":"a123456",
+                "age":19
+            }),*/
+            success:function (data) {
+                console.log(data);
+            },
+            error:function () {
+                console.log("网络错误!");
+            }
+
         });
     }
 </script>
