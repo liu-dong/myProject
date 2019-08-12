@@ -66,4 +66,16 @@ public class PersonManagementController {
         }
         return result;
     }
+
+    @RequestMapping(value="/getPersonInfo",method=RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public ReturnResult<PersonInfoBean> getPersonInfo(String id){
+        ReturnResult<PersonInfoBean> result = new ReturnResult<PersonInfoBean>();
+        try {
+            Person person = personManagementService.getPersonInfo(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

@@ -20,4 +20,6 @@ public interface PersonManagementService {
     List<Person> findPersonInfoList(PersonInfoBean bean, int page, int limit) throws Exception;
 
     int countPersonInfoTotal(PersonInfoBean bean);
+
+    Person getPersonInfo(String id);
 }

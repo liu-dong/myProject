@@ -40,6 +40,11 @@ public class PersonManagementServiceImpl implements PersonManagementService {
     }
 
     @Override
+    public Person getPersonInfo(String id) {
+        return personMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public int savePersonInfo(PersonInfoBean bean) throws Exception {
         int state = 0;//0：失败、1：成功
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
@@ -60,7 +65,6 @@ public class PersonManagementServiceImpl implements PersonManagementService {
         person.setNativePlace(bean.getNativePlace());
         person.setIndividualResume(bean.getIndividualResume());
         person.setCreateTime(new Date());
-        state = personMapper.insert(person);
         return state;
     }
 }

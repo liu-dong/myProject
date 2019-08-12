@@ -32,6 +32,7 @@
     <if test="sex != null and sex != '' ">
       and sex  = #{sex}
     </if>
+    order by create_time desc
     limit #{page},#{limit}
   </select>
 
