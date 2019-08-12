@@ -20,13 +20,13 @@
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
-                    <span id="name"></span>
+                    <input type="text" name="name" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">身份证号</label>
                 <div class="layui-input-inline">
-                    <span id="identityCard"></span>
+                    <input type="text" name="identityCard" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
@@ -34,13 +34,14 @@
             <div class="layui-inline">
                 <label class="layui-form-label">性别</label>
                 <div class="layui-input-inline">
-                    <span id="sex"></span>
+                    <input type="radio" name="sex" value="0" title="男" checked="checked" class="layui-input">
+                    <input type="radio" name="sex" value="1" title="女" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">籍贯</label>
                 <div class="layui-input-inline">
-                    <span id="nativePlace"></span>
+                    <input type="text" name="nativePlace" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
@@ -48,13 +49,13 @@
             <div class="layui-inline">
                 <label class="layui-form-label">出生日期</label>
                 <div class="layui-input-inline">
-                    <span id="birthdate"></span>
+                    <input type="text" name="birthdate" id="birthdate" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">年龄</label>
                 <div class="layui-input-inline">
-                    <span id="age"></span>
+                    <input type="text" name="age" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
@@ -62,29 +63,31 @@
             <div class="layui-inline">
                 <label class="layui-form-label">手机</label>
                 <div class="layui-input-inline">
-                    <span id="phone"></span>
+                    <input type="text" name="phone" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">邮箱</label>
                 <div class="layui-input-inline">
-                    <span id="email"></span>
+                    <input type="text" name="email" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">现住址</label>
             <div class="layui-input-block">
-                <span id="presentAddress"></span>
+                <input type="text" name="presentAddress" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">个人简介</label>
             <div class="layui-input-block">
-                <span id="individualResume"></span>
+                <textarea name="individualResume" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item" align="center">
+            <button type="button" class="layui-btn" onclick="saveInfo()">保存</button>
+            <!--<button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>-->
             <button type="button" onclick="javascript:history.go(-1);" class="layui-btn">返回</button>
         </div>
     </form>
@@ -96,28 +99,66 @@
         let form = layui.form,
             laydate = layui.laydate;
         layer = layui.layer;
-    });
 
-    $(function () {
-        alert("111");
-        loadInfo();
-    });
+        //日期
+        laydate.render({
+            elem: '#birthdate'
+        });
 
-    function loadInfo() {
-        let id = parent.laydate.id;
-        alert(id);
-        let url = "/personManagement/getPersonInfo?id="+id;
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        /*form.on('submit(demo1)', function(data){
+            console.log(data);
+            $.ajax({
+                url:"/personManagement/savePersonInfo",
+                type: "POST",
+                async: false,
+                // contentType
+                data: data,
+                dataType: "json",
+                success: function(result){
+                    if (result.status){
+                        layer.msg(result.message);
+                    }else {
+                        layer.msg(result.message);
+                    }
+                }
+            })
+        });*/
+    });
+    
+    function saveInfo() {
+        let url = "/personManagement/savePersonInfo";
+        let params = $("#form_panel").serializeObject();//{"name":"11"};//
+        debugger
+        console.log(params);
+        /*$.get(url,params,function(data){
+            alert("返回结果："+data);
+            console.log(data);
+        });*/
         $.ajax({
             url: url,
             type: "POST",
+            // contentType: "application/json;charset=UTF-8",
+            data: params,
             success:function (data) {
                 alert(data.message);
+                let index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);//关闭当前页
                 console.log(data);
             },
             error:function () {
                 alert(data.message);
                 layer.msg(data.message);
             }
+
         });
     }
 </script>

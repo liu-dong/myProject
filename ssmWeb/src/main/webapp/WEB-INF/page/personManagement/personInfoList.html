@@ -109,9 +109,9 @@
             if(layEvent === 'detail'){
                 layer.open({
                     type: 2,
-                    title: '查看',
-                    area:['80%','80%'],
-                    content: ['/page/personManagement/personInfoView.html','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    title: '查看信息',
+                    area:['60%','95%'],
+                    content: ['/page/personManagement/personInfoView.html','no'] //?id='+data.id这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                 });
             } else if(layEvent === 'del'){
                 layer.confirm('真的删除行么', function(index){
@@ -153,7 +153,7 @@
                 type: 2,
                 title: '人员信息',
                 area:['60%','95%'],
-                content: ['/page/personManagement/personInfoView.html','no']
+                content: ['/page/personManagement/personInfoEdit.html','no']
             });
         });
 
