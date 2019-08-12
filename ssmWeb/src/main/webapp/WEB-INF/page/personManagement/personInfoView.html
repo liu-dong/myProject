@@ -15,7 +15,7 @@
 </head>
 <body>
 <div style="margin: 20px 15px;">
-    <form id="form_panel" class="layui-form" method="post" autocomplete="on"><!--action="/personManagement/savePersonInfo"-->
+    <form id="form_panel" class="layui-form" autocomplete="on"><!--action="/personManagement/savePersonInfo"-->
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>
@@ -86,18 +86,19 @@
             </div>
         </div>
         <div class="layui-form-item" align="center">
-            <button class="layui-btn" onclick="saveInfo()">保存</button>
+            <button type="button" class="layui-btn" onclick="saveInfo()">保存</button>
             <!--<button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>-->
             <button type="button" onclick="javascript:history.go(-1);" class="layui-btn">返回</button>
         </div>
     </form>
 </div>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
+<script type="text/javascript">
+    var layer;
     layui.use(['form', 'laydate'], function(){
         let form = layui.form,
-            layer = layui.layer,
             laydate = layui.laydate;
+        layer = layui.layer;
 
         //日期
         laydate.render({
@@ -136,26 +137,26 @@
     function saveInfo() {
         let url = "/personManagement/savePersonInfo";
         let params = $("#form_panel").serializeObject();//{"name":"11"};//
+        debugger
         console.log(params);
-        /*$.post(url,params,function(data){
-            debugger
+        /*$.get(url,params,function(data){
+            alert("返回结果："+data);
             console.log(data);
         });*/
         $.ajax({
-            url:url,
-            type:"GET",
-            contentType: "application/json",
-            data:params,
-            /*data:JSON.stringify({
-                "username":"user666",
-                "password":"a123456",
-                "age":19
-            }),*/
+            url: url,
+            type: "POST",
+            // contentType: "application/json;charset=UTF-8",
+            data: params,
             success:function (data) {
+                alert(data.message);
+                let index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);//关闭当前页
                 console.log(data);
             },
             error:function () {
-                console.log("网络错误!");
+                alert(data.message);
+                layer.msg(data.message);
             }
 
         });
