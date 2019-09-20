@@ -1,6 +1,6 @@
 package com.dong.web.service.impl;
 
-import com.dong.web.domain.D_User;
+import com.dong.web.domain.User;
 import com.dong.web.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    public D_User getUserById(String userId) {
+    public User getUserById(String userId) {
         return null;
     }
 

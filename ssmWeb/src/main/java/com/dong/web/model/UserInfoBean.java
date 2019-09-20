@@ -3,6 +3,7 @@ package com.dong.web.model;
 public class UserInfoBean {
 
     private String id;//主键id
+    private String userType;//用户类型
     private String personId;//人员表主键id
     private String username;//用户名
     private String password;//
@@ -23,6 +24,14 @@ public class UserInfoBean {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getPersonId() {

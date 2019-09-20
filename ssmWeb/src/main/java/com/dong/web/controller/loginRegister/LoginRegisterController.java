@@ -2,7 +2,7 @@ package com.dong.web.controller.loginRegister;
 
 import com.alibaba.fastjson.JSON;
 import com.dong.common.ReturnResult;
-import com.dong.web.domain.D_User;
+import com.dong.web.domain.User;
 import com.dong.web.model.UserInfoBean;
 import com.dong.web.service.LoginRegisterService;
 import org.apache.shiro.SecurityUtils;
@@ -49,8 +49,8 @@ public class LoginRegisterController {
      * @return
      */
     @RequestMapping(value="/login", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public String login(D_User user, Model model){
-        ReturnResult<D_User> result = loginRegisterService.login(user);
+    public String login(User user, Model model){
+        ReturnResult<User> result = loginRegisterService.login(user);
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         model.addAttribute("username", result.getData().getUsername());
@@ -74,8 +74,8 @@ public class LoginRegisterController {
      */
     @RequestMapping(value="/register", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public D_User register(UserInfoBean bean){
-        D_User user = loginRegisterService.register(bean);
+    public User register(UserInfoBean bean){
+        User user = loginRegisterService.register(bean);
         return user;
     }
 }
