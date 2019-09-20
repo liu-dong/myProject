@@ -5,6 +5,7 @@ import com.dong.common.ReturnResult;
 import com.dong.web.dao.PersonMapper;
 import com.dong.web.dao.RoleMapper;
 import com.dong.web.dao.UserMapper;
+import com.dong.web.dao.UserRoleMapper;
 import com.dong.web.domain.Person;
 import com.dong.web.domain.Role;
 import com.dong.web.domain.User;
@@ -29,6 +30,8 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
     private PersonMapper personMapper;
     @Autowired
     private RoleMapper roleMapper;
+    @Autowired
+    private UserRoleMapper userRoleMapper;
 
     @Override
     public ReturnResult<User> login(User user) {
@@ -92,6 +95,9 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
                 role = new Role();
                 role.setId(roleId);
                 role.setRoleName("超级管理员");
+                role.setRemark("注册超级管理员");
+                role.setCreateTime(new Date());
+                roleMapper.insert(role);
             }
         }
 
@@ -100,6 +106,7 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         userRole.setId(CommonUtils.getUUID());
         userRole.setUserId(userId);
         userRole.setRoleId(roleId);
+        userRoleMapper.insert(userRole);
         return user;
     }
 
