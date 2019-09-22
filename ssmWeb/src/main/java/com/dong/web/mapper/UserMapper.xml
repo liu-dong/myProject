@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dong.web.dao.D_UserMapper" >
-  <resultMap id="BaseResultMap" type="com.dong.web.domain.D_User" >
+<mapper namespace="com.dong.web.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.dong.web.domain.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="user_type" property="userType" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
@@ -23,22 +23,22 @@
   <select id="getUserByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
-    from d_user
+    from User
     where username = #{username,jdbcType=VARCHAR}
   </select>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from d_user
+    from User
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from d_user
+    delete from User
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.dong.web.domain.D_User" >
-    insert into d_user (id, user_type, username, 
+  <insert id="insert" parameterType="com.dong.web.domain.User" >
+    insert into User (id, user_type, username, 
       password, person_id, real_name, 
       last_login_time, login_count, user_status, 
       create_time, update_time)
@@ -47,8 +47,8 @@
       #{lastLoginTime,jdbcType=TIMESTAMP}, #{loginCount,jdbcType=INTEGER}, #{userStatus,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.dong.web.domain.D_User" >
-    insert into d_user
+  <insert id="insertSelective" parameterType="com.dong.web.domain.User" >
+    insert into User
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -120,8 +120,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.domain.D_User" >
-    update d_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.dong.web.domain.User" >
+    update User
     <set >
       <if test="userType != null" >
         user_type = #{userType,jdbcType=INTEGER},
@@ -156,8 +156,8 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.D_User" >
-    update d_user
+  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.User" >
+    update User
     set user_type = #{userType,jdbcType=INTEGER},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

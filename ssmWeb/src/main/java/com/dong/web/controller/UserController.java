@@ -34,10 +34,10 @@ public class UserController {
         User user=null;
         if (userId==1) {
             user = new User();
-            user.setAge(11);
+//            user.setAge(11);
             user.setId(UUID.randomUUID().toString().replace("-", ""));
             user.setPassword("123");
-            user.setUserName("java");
+//            user.setUserName("java");
         }
 
         log.debug(user.toString());

@@ -1,39 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dong.web.dao.RoleMapper" >
-
-  <resultMap id="BaseResultMap" type="com.dong.web.domain.Role" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dong.web.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.dong.web.domain.Role">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, role_name
+  <sql id="Base_Column_List">
+    id, role_name, remark, create_time, update_time
   </sql>
 
-  <select id="findRoleList"  parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="findRoleList" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT r.* FROM role r
         INNER JOIN user_role ur ON ur.role_id = r.id
         INNER JOIN `user` u ON u.id = ur.user_id
         WHERE u.loginName = #{0}
   </select>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="findByRoleName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT r.* FROM role r
+        WHERE r.role_name = #{0}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from role
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from role
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.dong.web.domain.Role" >
-    insert into role (id, role_name)
-    values (#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.dong.web.domain.Role">
+    insert into role (id, role_name, remark, 
+      create_time, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.Role" >
+  <update id="updateByPrimaryKey" parameterType="com.dong.web.domain.Role">
     update role
-    set role_name = #{roleName,jdbcType=VARCHAR}
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

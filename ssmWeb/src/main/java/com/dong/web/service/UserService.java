@@ -1,10 +1,10 @@
 package com.dong.web.service;
 
-import com.dong.web.domain.D_User;
+import com.dong.web.domain.User;
 
 public interface UserService {
 
-    D_User getUserById(String id);
+    User getUserById(String id);
 
     /*List<User> findUserInfoList(UserInfoBean bean, int page, int limit);
 

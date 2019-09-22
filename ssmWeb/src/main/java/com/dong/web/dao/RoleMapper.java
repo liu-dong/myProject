@@ -14,4 +14,6 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
 
     List<Role> findRoleList(String username);
+
+    Role findByRoleName(String roleName);
 }
