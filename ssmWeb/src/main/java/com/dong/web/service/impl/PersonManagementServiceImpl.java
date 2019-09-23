@@ -25,7 +25,7 @@ public class PersonManagementServiceImpl implements PersonManagementService {
     @Override
     public List<Person> findPersonInfoList(PersonInfoBean bean, int page, int limit) {
         List<Person> resultList;
-        Map<String,Object> map = new HashMap<String, Object>();
+        Map<String,Object> map = new HashMap<>();
         map.put("name",bean.getName());
         map.put("sex",bean.getSex());
         map.put("page", (page-1)*limit);
