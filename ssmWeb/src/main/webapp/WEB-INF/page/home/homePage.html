@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/plugin/layui/css/layui.css"/>
     <script type="text/javascript" src="/js/jquery-3.4.0.js"></script>
     <script src="/plugin/layui/layui.js"></script>
+    <script src="/common/menu.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -14,19 +15,7 @@
             <span style="font-size: medium; "><!--系统名称--></span>
         </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left" id="topLeftMenu">
-            <!--<li class="layui-nav-item"><a href="javascript:void(0);">用户管理</a></li>-->
-            <!--<li class="layui-nav-item"><a href="javascript:void(0);">图书管理</a></li>-->
-            <!--<li class="layui-nav-item"><a href="javascript:void(0);">系统管理</a></li>-->
-            <!--<li class="layui-nav-item">
-                <a href="javascript:void(0);">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:void(0);">邮件管理</a></dd>
-                    <dd><a href="javascript:void(0);">消息管理</a></dd>
-                    <dd><a href="javascript:void(0);">授权管理</a></dd>
-                </dl>
-            </li>-->
-        </ul>
+        <ul class="layui-nav layui-layout-left" id="topLeftMenu"></ul>
         <ul class="layui-nav layui-layout-right" id="topRightMenu">
             <li class="layui-nav-item">
                 <a href="javascript:void(0);">
@@ -45,25 +34,7 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree" id="leftMenu">
-                <!--<li class="layui-nav-item layui-nav-itemed">
-                    <a href="javascript:void(0);">人员管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:loadPage('/page/personManagement/personInfoList.html');">人员信息列表</a></dd>
-                        <dd><a href="javascript:void(0);">人员信息统计列表</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:void(0);">角色管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:void(0);">列表一</a></dd>
-                        <dd><a href="javascript:void(0);">列表二</a></dd>
-                        <dd><a href="javascript:void(0);">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="javascript:void(0);">权限管理</a></li>
-                <li class="layui-nav-item"><a href="javascript:void(0);">菜单管理</a></li>-->
-            </ul>
+            <ul class="layui-nav layui-nav-tree" id="leftMenu"></ul>
         </div>
     </div>
 
@@ -98,54 +69,8 @@
     //初始化菜单
     function initMenu() {
         debugger
-        var topLiName = ["用户管理", "图书管理", "系统管理", "其他系统"];
-        // var leftLiName = ["用户管理","图书管理","系统管理","其他系统"];
-        var menu = [
-            {
-                "menuName": "人员管理",
-                "url": "#",
-                "childMenu": [
-                    {
-                        "menuName": "人员信息列表",
-                        "url": "/page/personManagement/personInfoList.html"
-                    },
-                    {
-                        "menuName": "人员信息统计列表",
-                        "url": "#"
-                    }
-                ]
-            },
-            {
-                "menuName": "角色管理",
-                "url": "#",
-                "childMenu": [
-                    {
-                        "menuName": "角色信息列表",
-                        "url": "#"
-                    }
-                ]
-            },
-            {
-                "menuName": "权限管理",
-                "url": "#",
-                "childMenu": [
-                    {
-                        "menuName": "权限信息列表",
-                        "url": "#"
-                    }
-                ]
-            },
-            {
-                "menuName": "菜单管理",
-                "url": "#",
-                "childMenu": [
-                    {
-                        "menuName": "菜单信息列表",
-                        "url": "#"
-                    }
-                ]
-            }
-        ];
+        let topLiName = ["用户管理", "图书管理", "系统管理", "其他系统"];
+        let menu = MENU_CONST;
         //系统名称
         $("#systemName").children().first().html("个人信息系统");
         //初始化topLeft菜单
