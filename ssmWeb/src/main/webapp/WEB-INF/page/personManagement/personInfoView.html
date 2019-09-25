@@ -16,6 +16,7 @@
 <body>
 <div style="margin: 20px 15px;">
     <form id="form_panel" class="layui-form" autocomplete="on"><!--action="/personManagement/savePersonInfo"-->
+        <input type="hidden" id="id" name="id">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>
@@ -99,13 +100,11 @@
     });
 
     $(function () {
-        alert("111");
         loadInfo();
     });
 
     function loadInfo() {
-        let id = parent.laydate.id;
-        alert(id);
+        let id = $("#id").val();
         let url = "/personManagement/getPersonInfo?id="+id;
         $.ajax({
             url: url,

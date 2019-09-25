@@ -107,11 +107,18 @@
             let data = obj.data, //获得当前行数据
                 layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
+                debugger
                 layer.open({
                     type: 2,
                     title: '查看信息',
                     area:['60%','95%'],
-                    content: ['/page/personManagement/personInfoView.html','no'] //?id='+data.id这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    content: ['/page/personManagement/personInfoView.html','no'],
+                    success: function(layero, index) {
+                        let body = layer.getChildFrame('body', index);//建立父子联系
+                        let iframeWin = window[layero.find('iframe')[0]['name']];
+                        let id = body.find('#id');
+                        $(id).val(data.id);
+                    }
                 });
             } else if(layEvent === 'del'){
                 layer.confirm('真的删除行么', function(index){
@@ -120,7 +127,12 @@
                     //向服务端发送删除指令
                 });
             } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+                layer.open({
+                    type: 2,
+                    title: '查看信息',
+                    area:['60%','95%'],
+                    content: ['/page/personManagement/personInfoEdit.html','no'] //?id='+data.id这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                });
             }
         });
 

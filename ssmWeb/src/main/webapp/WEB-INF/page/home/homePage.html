@@ -19,7 +19,7 @@
         <ul class="layui-nav layui-layout-right" id="topRightMenu">
             <li class="layui-nav-item">
                 <a href="javascript:void(0);">
-                    <img src="/images/background.jpg" class="layui-nav-img">
+                    <img src="/images/background.jpg" class="layui-nav-img"  alt="背景">
                     LD
                 </a>
                 <dl class="layui-nav-child">
@@ -68,16 +68,16 @@
     }
     //初始化菜单
     function initMenu() {
-        debugger
-        let topLiName = ["用户管理", "图书管理", "系统管理", "其他系统"];
-        let menu = MENU_CONST;
         //系统名称
         $("#systemName").children().first().html("个人信息系统");
+        debugger
+        let topLiName = ["用户管理", "图书管理", "系统管理", "其他系统"];
         //初始化topLeft菜单
         for (let i = 0; i < topLiName.length; i++) {
             $("#topLeftMenu").append("<li class=\"layui-nav-item\"><a href=\"javascript:void(0);\">" + topLiName[i] + "</a></li>")
         }
 
+        let menu = MENU_CONST;
         //初始化left菜单
         let li = "";//第一级菜单
         let dl = "";
