@@ -59,7 +59,7 @@ public class LoginRegisterController {
             Session session=subject.getSession();
             session.setAttribute("subject", subject);
 //            return "redirect:indexShiro";
-            return "home/homePage";
+            return "home/main.jsp";
         } catch (AuthenticationException e) {
             e.printStackTrace();
             model.addAttribute("error", "验证失败");
