@@ -70,22 +70,37 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 <!--        <property name="order" value="0"/>-->
     </bean>
+
     <!-- 配置多视图解析 -->
-    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+
+    <!--Velocity视图解析器-->
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="viewNames" value="*.html" />
+        <property name="suffix" value="" />
+        <property name="dateToolAttribute" value="date" />
+        <property name="numberToolAttribute" value="number" />
+        <property name="requestContextAttribute" value="rc" />
+        <property name="order" value="1"/>
+    </bean>
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/page/" />
+    </bean>
+<!--    <bean id="properties" class="java.util.Properties">-->
+<!--        <property name="property" value="*.html" />-->
+<!--        <property name="suffix" value="" />-->
+<!--        <property name="dateToolAttribute" value="date" />-->
+<!--        <property name="numberToolAttribute" value="number" />-->
+<!--        <property name="requestContextAttribute" value="rc" />-->
+<!--        <property name="order" value="1"/>-->
+<!--    </bean>-->
+    <!--<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/page/"/>
     </bean>
     <bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="suffix" value=".html" />
         <property name="order" value="0"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
-    </bean>
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/test/" />
-        <property name="suffix" value=".jsp" />
-    </bean>-->
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/page/" />
-        <property name="suffix" value=".html" />
     </bean>-->
 
 

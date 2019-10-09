@@ -3,7 +3,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry  location="D:\apache-maven-3.3.9\repository\mysql\mysql-connector-java\5.1.36\mysql-connector-java-5.1.36.jar"/>
+<!--    <classPathEntry  location="D:\apache-maven-3.3.9\repository\mysql\mysql-connector-java\5.1.36\mysql-connector-java-5.1.36.jar"/>-->
+    <classPathEntry  location="D:\apache-maven-3.6.1\repository\mysql\mysql-connector-java\5.1.36\mysql-connector-java-5.1.36.jar"/>
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
@@ -34,17 +35,18 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="person" domainObjectName="Person"
+        <!--<table tableName="person" domainObjectName="Person"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+
+        <table tableName="role" domainObjectName="Role"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
         <!--<table tableName="person" domainObjectName="Person"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table tableName="role" domainObjectName="Role"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
