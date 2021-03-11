@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"%>
+    pageEncoding="UTF-8" %>
  
 <!DOCTYPE html>
  
@@ -9,7 +9,7 @@
  
 <div class="workingroom">
 
-	deleteOrder.jsp ，能进来，就表示有deleteOrder权限
+	listProduct.jsp ，能进来，就表示已经登录成功了
 	<br>
 	<a href="#" onClick="javascript:history.back()">返回</a>
 </div>
