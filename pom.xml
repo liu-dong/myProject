@@ -7,7 +7,7 @@
     <groupId>com.dong</groupId>
     <artifactId>myProject</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>ssmWeb</name>
+    <name>myProject</name>
     <description>构建ssm框架</description>
 
     <properties>
