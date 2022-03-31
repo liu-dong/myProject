@@ -12,7 +12,7 @@
 
     <properties>
         <!-- spring版本号 -->
-        <spring.version>4.0.2.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <!--
             Q：一次HTTP-406的错误
             A:https://blog.csdn.net/zhangtxsir/article/details/79521810
